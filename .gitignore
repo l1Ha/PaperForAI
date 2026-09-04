@@ -1,0 +1,7 @@
+*.pdf
+*.json
+!schema_v1.json
+__pycache__/
+.env
+*.log
+.DS_Store

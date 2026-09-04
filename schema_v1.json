@@ -1,0 +1,48 @@
+{
+  "paper": {
+    "title": "",
+    "authors": [],
+    "journal": "",
+    "year": null,
+    "doi": "",
+    "keywords": []
+  },
+  "research": {
+    "field": [],
+    "system": {},
+    "reaction": "",
+    "research_question": ""
+  },
+  "states": {
+    "initial_states": [],
+    "final_states": [],
+    "resonance_states": [],
+    "quantum_numbers": []
+  },
+  "theory": {
+    "method": "",
+    "hamiltonian": {},
+    "potential": {},
+    "basis": "",
+    "scattering_formalism": {}
+  },
+  "numerical": {
+    "grid": {},
+    "partial_waves": {},
+    "time_independent": true,
+    "adiabatic_propagation": "",
+    "convergence": {}
+  },
+  "observables": [],
+  "results": [],
+  "figures": [],
+  "equations": [],
+  "limitations": [],
+  "references": [],
+  "metadata": {
+    "parsed_by": "",
+    "parsed_at": "",
+    "schema_version": "1.0",
+    "validation_status": "pending"
+  }
+}
