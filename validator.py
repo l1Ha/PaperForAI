@@ -27,25 +27,40 @@ def iter_items(obj, key):
 
 def check_formulas(extracted: dict, pdf_text: str) -> Dict[str, Any]:
     issues = []
-    for eq_id, eq_val in iter_items(extracted, "equations"):
-        latex = eq_val if isinstance(eq_val, str) else eq_val.get("latex", "")
+    equations = extracted.get("equations", {})
+    if isinstance(equations, dict):
+        items = equations.items()
+    elif isinstance(equations, list):
+        items = [(f"eq{i}", eq) for i, eq in enumerate(equations)]
+    else:
+        items = []
+    for eq_id, eq_val in items:
+        latex = eq_val if isinstance(eq_val, str) else (eq_val.get("latex", "") if isinstance(eq_val, dict) else "")
         if latex and latex not in pdf_text:
             key_parts = [p for p in re.split(r'[\s=+\-*/^_(){}]', latex) if len(p) > 3]
             found = any(part in pdf_text for part in key_parts)
             if not found:
                 issues.append(f"Equation '{eq_id}': LaTeX not found in PDF")
-    return {"passed": len(issues) == 0, "issues": issues, "checked": len(list(extracted.get("equations", {}).keys()))}
+    return {"passed": len(issues) == 0, "issues": issues, "checked": len(items)}
 
 
 def check_figures(extracted: dict, pdf_text: str) -> Dict[str, Any]:
     issues = []
-    for fig_id, fig_val in iter_items(extracted, "figures"):
-        caption = fig_val if isinstance(fig_val, str) else fig_val.get("caption", "")
+    figures = extracted.get("figures", {})
+    if isinstance(figures, dict):
+        items = figures.items()
+    elif isinstance(figures, list):
+        items = [(str(i), fig) for i, fig in enumerate(figures)]
+    else:
+        items = []
+    for fig_id, fig_val in items:
+        fig_id_str = str(fig_id)
+        caption = fig_val if isinstance(fig_val, str) else (fig_val.get("caption", "") if isinstance(fig_val, dict) else "")
         if caption and caption[:50] not in pdf_text:
-            issues.append(f"Figure {fig_id}: caption not found in PDF")
-        if fig_id and fig_id not in pdf_text:
-            issues.append(f"Figure {fig_id}: ID not referenced in PDF text")
-    return {"passed": len(issues) == 0, "issues": issues, "checked": len(list(extracted.get("figures", {}).keys()))}
+            issues.append(f"Figure {fig_id_str}: caption not found in PDF")
+        if fig_id_str and fig_id_str not in pdf_text:
+            issues.append(f"Figure {fig_id_str}: ID not referenced in PDF text")
+    return {"passed": len(issues) == 0, "issues": issues, "checked": len(items)}
 
 
 def check_references(extracted: dict, pdf_text: str) -> Dict[str, Any]:
