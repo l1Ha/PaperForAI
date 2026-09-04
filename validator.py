@@ -7,7 +7,7 @@ import json
 import re
 import fitz
 from pathlib import Path
-from typing import Dict, List, Any, Tuple
+from typing import Dict, List, Any
 
 
 def load_pdf_text(pdf_path: str) -> str:
@@ -15,43 +15,45 @@ def load_pdf_text(pdf_path: str) -> str:
     return "\n".join(page.get_text() for page in doc)
 
 
+def iter_items(obj, key):
+    """Handle both dict and list formats."""
+    val = obj.get(key, {})
+    if isinstance(val, dict):
+        return val.items()
+    elif isinstance(val, list):
+        return enumerate(val)
+    return []
+
+
 def check_formulas(extracted: dict, pdf_text: str) -> Dict[str, Any]:
-    """Verify equation LaTeX appears in paper."""
     issues = []
-    equations = extracted.get("equations", [])
-    for eq in equations:
-        latex = eq.get("latex", "")
+    for eq_id, eq_val in iter_items(extracted, "equations"):
+        latex = eq_val if isinstance(eq_val, str) else eq_val.get("latex", "")
         if latex and latex not in pdf_text:
-            # Try to find similar
             key_parts = [p for p in re.split(r'[\s=+\-*/^_(){}]', latex) if len(p) > 3]
             found = any(part in pdf_text for part in key_parts)
             if not found:
-                issues.append(f"Equation '{eq.get('id', '?')}': LaTeX not found in PDF")
-    return {"passed": len(issues) == 0, "issues": issues, "checked": len(equations)}
+                issues.append(f"Equation '{eq_id}': LaTeX not found in PDF")
+    return {"passed": len(issues) == 0, "issues": issues, "checked": len(list(extracted.get("equations", {}).keys()))}
 
 
 def check_figures(extracted: dict, pdf_text: str) -> Dict[str, Any]:
-    """Verify figure captions and references."""
     issues = []
-    figures = extracted.get("figures", [])
-    for fig in figures:
-        caption = fig.get("caption", "")
-        fig_id = fig.get("id", "")
+    for fig_id, fig_val in iter_items(extracted, "figures"):
+        caption = fig_val if isinstance(fig_val, str) else fig_val.get("caption", "")
         if caption and caption[:50] not in pdf_text:
             issues.append(f"Figure {fig_id}: caption not found in PDF")
         if fig_id and fig_id not in pdf_text:
             issues.append(f"Figure {fig_id}: ID not referenced in PDF text")
-    return {"passed": len(issues) == 0, "issues": issues, "checked": len(figures)}
+    return {"passed": len(issues) == 0, "issues": issues, "checked": len(list(extracted.get("figures", {}).keys()))}
 
 
 def check_references(extracted: dict, pdf_text: str) -> Dict[str, Any]:
-    """Verify reference citations exist."""
     issues = []
     refs = extracted.get("references", [])
     for ref in refs:
-        citation = ref.get("citation", "")
+        citation = ref.get("citation", "") if isinstance(ref, dict) else str(ref)
         if citation:
-            # Check if first author + year appears
             author_year = re.search(r'(\w+)\s+et\s+al\.\s+(\d{4})', citation)
             if author_year:
                 author, year = author_year.groups()
@@ -61,53 +63,59 @@ def check_references(extracted: dict, pdf_text: str) -> Dict[str, Any]:
 
 
 def check_physics_params(extracted: dict, pdf_text: str) -> Dict[str, Any]:
-    """Check for hallucinated physics parameters."""
     issues = []
     warnings = []
     
     # Check theory.potential terms
     pot = extracted.get("theory", {}).get("potential", {})
-    terms = pot.get("terms", {})
+    terms = pot.get("terms", {}) if isinstance(pot, dict) else {}
     for term, desc in terms.items():
         if term not in pdf_text and term.lower() not in pdf_text.lower():
             warnings.append(f"Potential term '{term}' not explicitly in PDF (may be inferred)")
     
     # Check quantum numbers
-    qnums = extracted.get("states", {}).get("quantum_numbers", [])
-    for qn in qnums:
-        if qn not in pdf_text:
-            warnings.append(f"Quantum number '{qn}' not found in PDF")
+    qnums = extracted.get("states", {}).get("quantum_numbers", {})
+    if isinstance(qnums, dict):
+        for qn in qnums.keys():
+            if qn not in pdf_text:
+                warnings.append(f"Quantum number '{qn}' not found in PDF")
+    elif isinstance(qnums, list):
+        for qn in qnums:
+            if qn not in pdf_text:
+                warnings.append(f"Quantum number '{qn}' not found in PDF")
     
     # Check observables symbols
-    for obs in extracted.get("observables", []):
-        sym = obs.get("symbol", "")
-        if sym and sym not in pdf_text:
-            warnings.append(f"Observable symbol '{sym}' not in PDF")
+    for _, obs in iter_items(extracted, "observables"):
+        if isinstance(obs, dict):
+            sym = obs.get("symbol", "")
+            if sym and sym not in pdf_text:
+                warnings.append(f"Observable symbol '{sym}' not in PDF")
     
     return {"passed": len(issues) == 0, "issues": issues, "warnings": warnings}
 
 
 def check_units(extracted: dict) -> Dict[str, Any]:
-    """Basic unit consistency checks."""
     issues = []
     unit_pattern = re.compile(r'(cm\^3|s\^-1|K|mK|eV|meV|a\.?u\.?|a₀|bohr|hartree)')
     
-    for obs in extracted.get("observables", []):
-        units = obs.get("units", "")
-        if units and not unit_pattern.search(units):
-            issues.append(f"Observable '{obs.get('name')}': unusual units '{units}'")
+    for _, obs in iter_items(extracted, "observables"):
+        if isinstance(obs, dict):
+            units = obs.get("units", "")
+            name = obs.get("name", "unknown")
+            if units and not unit_pattern.search(units):
+                issues.append(f"Observable '{name}': unusual units '{units}'")
     
     return {"passed": len(issues) == 0, "issues": issues}
 
 
 def check_hallucination(extracted: dict, pdf_text: str) -> Dict[str, Any]:
-    """Heuristic: check specific claims appear in text."""
     issues = []
     
-    # Check key results have textual support
-    for res in extracted.get("results", []):
-        finding = str(res.get("key_features", "")) + str(res.get("finding", ""))
-        # At least some keywords should appear
+    for _, res in iter_items(extracted, "results"):
+        if isinstance(res, dict):
+            finding = str(res.get("key_features", "")) + str(res.get("finding", "")) + str(res.get("agreement", ""))
+        else:
+            finding = str(res)
         keywords = [w for w in finding.split() if len(w) > 4]
         matches = sum(1 for k in keywords if k.lower() in pdf_text.lower())
         if keywords and matches < max(1, len(keywords) * 0.3):
