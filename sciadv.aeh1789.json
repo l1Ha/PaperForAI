@@ -1,0 +1,367 @@
+{
+  "paper": {
+    "title": "Direct observation of quantum scattering oscillations in the controlled Kr* + Rb cold collision",
+    "authors": [
+      "Yu-Chan Wang",
+      "Rui-Fan Wu",
+      "Hao Li",
+      "Zhao-Cong Shi",
+      "Guo-Min Yang",
+      "Ya-Fu Guan",
+      "Bin Zhao",
+      "Wei Jiang"
+    ],
+    "journal": "Science Advances",
+    "volume": "12",
+    "issue": "eaeh1789",
+    "year": 2026,
+    "date": "4 September 2026",
+    "doi": "10.1126/sciadv.eaeh1789",
+    "affiliations": [
+      "Hefei National Research Center for Physical Sciences at the Microscale and School of Physical Sciences, University of Science and Technology of China, Hefei 230026, China",
+      "Hefei National Laboratory, University of Science and Technology of China, Hefei 230088, China",
+      "Department of Chemistry, College of Science, Southern University of Science and Technology, Shenzhen 518055, China",
+      "Dalian Institute of Chemical Physics, Chinese Academy of Sciences, Dalian 116023, China"
+    ],
+    "corresponding_authors": [
+      "guanyf@dicp.ac.cn (Y.-F.G.)",
+      "zhaobin@sustech.edu.cn (B.Z.)",
+      "wjiang1@ustc.edu.cn (W.J.)"
+    ]
+  },
+  "research": {
+    "objective": "Observe quantum scattering oscillations in cold ionizing collisions between metastable krypton (Kr*) and rubidium (Rb) atoms by combining laser cooling with velocity-mapped ion imaging (VMI) to control collision energy from 15 mK to 8 K and measure differential cross sections (DCS).",
+    "system": "Kr* (4p^5 5s[3/2]_2, 9.9 eV) + Rb (5S_{1/2}, F=2) cold collisions leading to Penning ionization (PI) and associative ionization (AI).",
+    "key_findings": [
+      "Pronounced quantum interference between partial waves emerges below 1 K as de Broglie wavelength approaches interaction range.",
+      "Angular oscillation period scales as θ_p ∝ E^{-1/3}, consistent with Langevin capture model for van der Waals-dominated collisions.",
+      "Interference patterns in angular distribution–collision temperature (A-T) spectrum are highly sensitive to long-range potential shape and reveal subtle shape resonances.",
+      "Backward scattering enhanced at specific collision energies (~40, 70, 120, 170 mK) due to shape resonances in specific partial waves (e.g., l=11 at 32 mK).",
+      "Radial oscillations in Rb+ kinetic energy distribution originate from Fourier transform of √Γ ψ* (autoionization transition matrix element).",
+      "Experimental results corroborated by theoretical calculations, but discrepancies highlight need for multichannel models and accurate ab initio ionization widths."
+    ],
+    "methods": [
+      "Laser cooling and trapping of Kr* and Rb in two vertically separated MOTs (60 cm apart).",
+      "Moving molasses technique to launch Kr* atoms with controlled velocity toward Rb MOT.",
+      "Velocity map imaging (VMI) detection of ion products (Rb+ from PI, KrRb+ from AI).",
+      "Inverse Abel transformation to obtain DCS.",
+      "Time-independent quantum scattering calculations on computed potential energy curves (RASSCF with spin-orbit coupling for V*, analytical for V+).",
+      "Phenomenological exponential fit for imaginary part of V* (autoionization width).",
+      "Energy-dependent convolution to account for experimental energy spread."
+    ]
+  },
+  "states": {
+    "reactants": {
+      "Kr*": {
+        "state": "4p^5 5s[3/2]_2 (metastable)",
+        "energy": "9.9 eV",
+        "mass": "84 amu (84Kr*)"
+      },
+      "Rb": {
+        "state": "5S_{1/2}, F=2 (ground state)",
+        "mass": "87 amu (87Rb)"
+      }
+    },
+    "products": {
+      "PI": "Kr + Rb+ + e-",
+      "AI": "KrRb+ + e-"
+    },
+    "intermediate_complex": "(KrRb)* transient complex on lowest electronically excited adiabatic PEC",
+    "potential_energy_curves": {
+      "V* (metastable)": {
+        "method": "RASSCF with spin-orbit coupling",
+        "well_depth": "0.33 eV (~2700 cm^{-1})",
+        "well_position": "R = 11 bohr",
+        "long_range": "C6/R^6 analytical form",
+        "imaginary_part": "phenomenological exponential fit (autoionization width Γ)"
+      },
+      "V+ (ionic)": {
+        "method": "established analytical expression (refs 44-46)",
+        "well_depth": "0.25 eV (~2000 cm^{-1})",
+        "well_position": "R = 6 bohr"
+      }
+    },
+    "quantum_numbers": {
+      "partial_wave": "l (orbital angular momentum)",
+      "total_angular_momentum": "J",
+      "spin_orbit": "Ω",
+      "parity": "ε"
+    }
+  },
+  "theory": {
+    "electronic_structure": {
+      "method": "RASSCF with spin-orbit coupling",
+      "basis": "not specified",
+      "states_calculated": "lowest electronically excited adiabatic PEC for Kr*+Rb"
+    },
+    "scattering": {
+      "method": "time-independent quantum method for scattering wave functions on V* and V+ surfaces under s-wave electron approximation",
+      "partial_wave_expansion": "yes",
+      "coupled_channels": "single-channel (lowest spin-orbit-coupled adiabatic PEC only)",
+      "autoionization_treatment": "phenomenological exponential fit for Γ(R), s-wave electron approximation",
+      "energy_convolution": "energy-dependent convolution applied to ion energy distribution to account for experimental spread"
+    },
+    "langevin_model": {
+      "l_max_expression": "l_max = 2^{-1/3} √(6μ/ħ^2) C_6^{1/6} E^{1/3}",
+      "angular_period": "θ_p ≈ π/l_max ∝ E^{-1/3}",
+      "validity": "for long-range C6/R^6 potential, nonresonant cases"
+    },
+    "autoionization_matrix_element": "Fourier transform of √Γ ψ* from coordinate to momentum space, modulated by fast-oscillating cosine term"
+  },
+  "numerical": {
+    "collision_energy_range": "15 mK to 8 K",
+    "energy_spread": "20% at 15 mK, 1% at 8 K (center-of-mass frame)",
+    "vmi_resolution": "insufficient to analyze KrRb+ ions with ~5 m/s velocity",
+    "angular_resolution": "limited, blurs oscillations above 200 mK",
+    "energy_resolution": "~10 mK for A-T spectrum scans",
+    "partial_waves_calculated": "up to l_max determined by centrifugal barrier",
+    "convergence": "not explicitly stated",
+    "potential_modifications": "two modified long-range potentials (35-45 bohr) tested for sensitivity analysis"
+  },
+  "observables": {
+    "differential_cross_section": {
+      "symbol": "DCS(θ, E)",
+      "units": "arbitrary units (normalized to total VMI intensity)",
+      "range": "θ: 0-180°, E: 15 mK - 8 K"
+    },
+    "angular_oscillation_period": {
+      "symbol": "θ_p",
+      "units": "degrees or radians",
+      "scaling": "θ_p ∝ E^{-1/3}",
+      "range": "15 mK - 1 K (experiment), up to 1 K (theory)"
+    },
+    "kinetic_energy_distribution_Rb+": {
+      "symbol": "P(E_kin)",
+      "units": "normalized intensity",
+      "cutoff": "~0.16 eV",
+      "features": "oscillatory structure, nearly independent of collision energy"
+    },
+    "backward_scattering_enhancement": {
+      "symbol": "DCS(θ≈180°)",
+      "units": "relative intensity",
+      "resonance_energies_experiment": "~40, 70, 120, 170 mK",
+      "resonance_energies_theory": "32, 50, 70, 135, 178 mK"
+    },
+    "total_cross_section": {
+      "symbol": "σ_total",
+      "units": "not given",
+      "note": "experiment lacks resonant features predicted by theory"
+    },
+    "A_T_spectrum": {
+      "description": "angular distribution vs collision temperature",
+      "sensitivity": "highly sensitive to long-range potential (35-45 bohr)"
+    }
+  },
+  "results": {
+    "quantum_regime": "below 200 mK, pronounced oscillatory structures in DCS (angular and radial)",
+    "classical_regime": "above 200 mK, oscillations blurred by many partial waves and VMI resolution",
+    "angular_scaling": "θ_p ∝ E^{-1/3} from 15 mK to 1 K, consistent with Langevin model for van der Waals collisions",
+    "shape_resonances": "observed as enhanced backward scattering at specific energies; theory predicts resonances in specific partial waves (e.g., l=11 at 32 mK)",
+    "radial_oscillations": "originate from Fourier transform of √Γ ψ*; cutoff at 0.16 eV determined by V* well depth",
+    "theory_experiment_agreement": "qualitative agreement for angular oscillations and energy distributions; discrepancies in resonance positions/amplitudes and fine structure",
+    "potential_sensitivity": "A-T spectrum highly sensitive to long-range potential shape (35-45 bohr)"
+  },
+  "figures": {
+    "Fig.1": {
+      "description": "Experimental setup, energy levels, and potential energy curves. (A) Two MOTs with moving molasses launching Kr* toward Rb MOT, VMI detection. (B) Energy levels of Kr and Rb, schematic of autoionizing (KrRb)* complex. (C) PECs V* (metastable) and V+ (ionic), imaginary part Γ, and V*-V+ difference indicating electron kinetic energy.",
+      "panels": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "Fig.2": {
+      "description": "VMI data at 40, 200, and 5100 mK. (A,E,I) Experimental DCS via inverse Abel transform. (B,F,J) Theoretical velocity distribution. (C,G,K) Angular distributions with θ_p marked. (D,H,L) Kinetic energy distributions of Rb+ ions.",
+      "panels": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L"
+      ]
+    },
+    "Fig.3": {
+      "description": "Angular distribution analysis. (A) Experimental A-T spectrum (angular DCS vs collision energy). (B) Theoretical A-T spectrum with -1/3 power-law lines and resonance arrows. (C) Angular period vs collision energy showing -1/3 scaling. (D) Partial wave contributions at various energies, showing resonance enhancement at l=11 for 32 mK.",
+      "panels": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "Fig.4": {
+      "description": "Sensitivity of A-T spectrum to Kr*+Rb PEC. (A) Ab initio PEC and two modified potentials. (B) Angular DCS from ab initio (top) and modified potentials (middle, bottom). Modified potential 1 matches experiment better.",
+      "panels": [
+        "A",
+        "B"
+      ]
+    },
+    "Fig.5": {
+      "description": "Energy distribution of Rb+ ions. (A) Normalized experimental kinetic energy distributions at different collision energies. (B) Theoretical kinetic energy distributions. (C) Normalized momentum distribution of √Γ ψ* showing similar spectral profiles.",
+      "panels": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  },
+  "equations": {
+    "reaction_PI": "Kr* + Rb → Kr + Rb+ + e- (1)",
+    "reaction_AI": "Kr* + Rb → KrRb+ + e- (2)",
+    "langevin_l_max": "l_max = 2^{-1/3} √(6μ/ħ^2) C_6^{1/6} E^{1/3}",
+    "angular_period": "θ_p ≈ π/l_max ∝ E^{-1/3}",
+    "autoionization_matrix_element": "Fourier transform of √Γ ψ* from coordinate to momentum space, modulated by fast-oscillating cosine term"
+  },
+  "limitations": {
+    "experimental": [
+      "VMI resolution insufficient to analyze low-velocity KrRb+ ions (~5 m/s) from AI.",
+      "Energy spread: 20% at 15 mK, 1% at 8 K.",
+      "Angular resolution limited, blurs oscillations above 200 mK.",
+      "Total cross section measured but lacks resonant features."
+    ],
+    "theoretical": [
+      "Single-channel model (lowest spin-orbit-coupled adiabatic PEC only) ignores multichannel effects (electron spins, spin-dependent interactions).",
+      "Phenomenological exponential fit for autoionization width Γ(R) rather than ab initio.",
+      "Limited accuracy in long-range van der Waals potential shape.",
+      "s-wave electron approximation for autoionization.",
+      "Discrepancies in resonance positions and amplitudes between theory and experiment."
+    ],
+    "general": [
+      "Need for multichannel theoretical models.",
+      "Need for accurate ab initio ionization widths.",
+      "Benchmark cold collision experiments needed to validate theory."
+    ]
+  },
+  "references": [
+    {
+      "citation": "(1–10)",
+      "context": "Cold collision reactions (1 mK to 1 K) active field."
+    },
+    {
+      "citation": "(1, 2, 4, 6, 8)",
+      "context": "Few partial waves in cold collisions, individual contributions resolvable."
+    },
+    {
+      "citation": "(11–12)",
+      "context": "de Broglie wavelength comparable to interaction length, tunneling and quantum reflection."
+    },
+    {
+      "citation": "(1, 2, 4, 6)",
+      "context": "Shape resonance in cold collisions."
+    },
+    {
+      "citation": "(6, 8, 13)",
+      "context": "Quantum interference in cold collisions."
+    },
+    {
+      "citation": "(1–7)",
+      "context": "Merged-beam technique with neutral supersonic beams achieving sub-K temperatures."
+    },
+    {
+      "citation": "(1, 2)",
+      "context": "Shape resonance and isotope effects in He* + H2, HD, D2 Penning ionization."
+    },
+    {
+      "citation": "(4, 5)",
+      "context": "Ne* chemi-ionization showing quantum-state-controlled channel branching and stereodynamics."
+    },
+    {
+      "citation": "(7, 8, 14–18)",
+      "context": "Stark decelerators with merged/crossed beams for high-resolution DCS."
+    },
+    {
+      "citation": "(1, 2, 8)",
+      "context": "Low-partial-wave resonances and interference in H2."
+    },
+    {
+      "citation": "(1, 2, 13)",
+      "context": "Low-partial-wave resonances and interference in He."
+    },
+    {
+      "citation": "(9, 10, 19–32)",
+      "context": "Laser cooling enabling ultracold atoms/molecules."
+    },
+    {
+      "citation": "(28–31)",
+      "context": "Collisions in optical traps with single partial wave."
+    },
+    {
+      "citation": "(1–5, 33)",
+      "context": "PI and AI important in atomic/molecular physics and interstellar chemistry."
+    },
+    {
+      "citation": "(1–6)",
+      "context": "Merged-beam studies of cold ionization collisions in light-atom systems."
+    },
+    {
+      "citation": "(34)",
+      "context": "Velocity map imaging (VMI) technique."
+    },
+    {
+      "citation": "(35)",
+      "context": "Apparatus details (Fig. 1)."
+    },
+    {
+      "citation": "(36, 37)",
+      "context": "Moving molasses technique."
+    },
+    {
+      "citation": "(38, 39)",
+      "context": "PI and AI processes."
+    },
+    {
+      "citation": "(38–41)",
+      "context": "Energy distribution among reaction products."
+    },
+    {
+      "citation": "(42)",
+      "context": "RASSCF method with spin-orbit coupling for V*."
+    },
+    {
+      "citation": "(43)",
+      "context": "Analytical expression for long-range R^{-6} behavior."
+    },
+    {
+      "citation": "(44–46)",
+      "context": "Established analytical expression for V+ (Kr + Rb+)."
+    },
+    {
+      "citation": "(47–50)",
+      "context": "Time-independent quantum scattering method under s-wave electron approximation."
+    },
+    {
+      "citation": "(51)",
+      "context": "Inverse Abel transformation of VMI signal."
+    },
+    {
+      "citation": "(52)",
+      "context": "Langevin capture model."
+    },
+    {
+      "citation": "(53)",
+      "context": "Autoionization transition matrix element as Fourier transform of √Γ ψ*."
+    },
+    {
+      "citation": "(54)",
+      "context": "Laser cooling of metastable rare gas, alkali metal, alkaline earth metal atoms."
+    },
+    {
+      "citation": "(55)",
+      "context": "Laser cooling technology for molecules."
+    }
+  ],
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-06T10:51:35.717471",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "sciadv.aeh1789.pdf"
+  }
+}
