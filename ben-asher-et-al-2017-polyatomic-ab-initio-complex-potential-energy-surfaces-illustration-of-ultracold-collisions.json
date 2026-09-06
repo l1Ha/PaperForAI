@@ -1,0 +1,270 @@
+{
+  "paper": {
+    "title": "Polyatomic ab Initio Complex Potential Energy Surfaces: Illustration of Ultracold Collisions",
+    "authors": [
+      "Debarati Bhattacharya",
+      "Anael Ben-Asher",
+      "Idan Haritan",
+      "Mariusz Pawlak",
+      "Arie Landau",
+      "Nimrod Moiseyev"
+    ],
+    "journal": "Journal of Chemical Theory and Computation",
+    "year": 2017,
+    "volume": 13,
+    "pages": "1682-1690",
+    "doi": "10.1021/acs.jctc.7b00083",
+    "received": "January 26, 2017",
+    "published": "March 13, 2017"
+  },
+  "research": {
+    "objective": "Calculate ab initio complex potential energy surfaces (CPES) for the He(2^3S) + H2 collision system using the resonances via Padé (RVP) method, and compute first-principles reaction rates for ortho- and para-H2 to interpret ultracold Penning ionization experiments.",
+    "system": "He(2^3S, 1s2s) + H2 (rigid rotor, r0 = 0.74085 Å) → [He*–H2]* (Feshbach resonance) → He(1^1S) + H2+ + e-",
+    "key_findings": [
+      "Real and imaginary parts of CPES calculated concurrently at high level (EOM-SF-CCSD(dT)/5ZP+diffuse).",
+      "Shallow potential well depths: T-shape 2.87×10^-5 hartree (6.3 cm^-1), linear 5.012×10^-5 hartree (11 cm^-1).",
+      "Decay rate Γ(R,φ) fits single exponential, confirming Penning ionization mechanism.",
+      "First-principles reaction rates (no fitting parameters) agree remarkably with sub-Kelvin experimental data for both ortho- and para-H2.",
+      "Method is general for polyatomic resonance states and large decay rates (e.g., ICD)."
+    ]
+  },
+  "states": {
+    "initial": {
+      "He": "2^3S (1s2s), triplet excited state",
+      "H2": "X^1Σ_g^+, rigid rotor, r0 = 0.74085 Å",
+      "rotational_states": {
+        "para": "j = 0 (rotational ground state)",
+        "ortho": "j = 1 (first excited rotational state)"
+      }
+    },
+    "resonance": {
+      "supermolecule": "He*–H2 (Feshbach resonance)",
+      "coordinates": "Jacobi: R (He to H2 center-of-mass distance), φ (angle between R and H2 bond)",
+      "quantum_numbers": {
+        "j": "H2 rotational angular momentum",
+        "l": "atom-diatom relative orbital angular momentum",
+        "Ω": "total angular momentum projection (not explicitly used)"
+      }
+    },
+    "final": {
+      "He": "1^1S (1s^2) ground state",
+      "H2+": "X^2Σ_g^+ cation",
+      "electron": "free, kinetic energy E_e^kinetic"
+    }
+  },
+  "theory": {
+    "method": "Resonances via Padé (RVP): stabilization technique + analytical continuation via Padé approximant",
+    "electronic_structure": {
+      "method": "EOM-SF-CCSD(dT) (equation-of-motion spin-flip coupled cluster with singles, doubles, perturbative triples)",
+      "basis_set": "Primitive 5ZP augmented with 3s,3p diffuse functions on H and 6s,6p on He (even-tempered, spacing 2.0), tight g-functions removed",
+      "reference": "He–H2 1^1S ground state for neutral; He–H2+ 4^S high-spin for cation",
+      "software": "Q-Chem"
+    },
+    "cpes_representation": {
+      "expansion": "V(R,φ) = Σ_j [V_j(R) - i/2 Γ_j(R)] P_j(cos φ), with V_1 = 0 by symmetry",
+      "components": "V_0(R) = 1/3 [V(R,0) + 2V(R,π/2)], V_2(R) = 2/3 [V(R,0) - V(R,π/2)]",
+      "real_part_wells": "V_0: ~3.5×10^-5 hartree (7.7 cm^-1); V_2: ~2.28×10^-5 hartree (5 cm^-1)"
+    },
+    "nuclear_hamiltonian": {
+      "metastable": "Ĥ = -ħ^2/(2μ) ∂^2/∂R^2 + ĵ^2/(2μr^2) + l̂^2/(2μR^2) + Re[V(R,φ)] - i/2 Γ(R,φ)",
+      "product": "Ĥ = -ħ^2/(2μ) ∂^2/∂R^2 + ĵ^2/(2μr^2) + l̂^2/(2μR^2) + V_He-H2+(R,φ)"
+    },
+    "scattering_theory": "Adiabatic variational theory (refs 49,50); reaction rate k(E_col) = (v_col/k_col^2) P(E_col) with transition probability P(E_col) = ∫ Ψ_f^* Γ Ψ_i dR dφ"
+  },
+  "numerical": {
+    "basis_set_details": "5ZP + diffuse (3s3p on H, 6s6p on He), even-tempered spacing 2.0, tight g-functions removed, BSSE tested",
+    "convergence": "Convergence with respect to diffuse functions and cardinal number ζ detailed in Supporting Information (Tables S1, S2)",
+    "geometries": "φ = 0 (linear) and φ = π/2 (T-shape); R varied over wide range",
+    "energy_range": "Ultracold collision energies (milliKelvin to sub-Kelvin)",
+    "decay_rate_fit": "Single exponential in R (linear in log scale)",
+    "reaction_rate_units": "cm^3/s"
+  },
+  "observables": {
+    "reaction_rates": {
+      "symbol": "k(E_col)",
+      "units": "cm^3/s",
+      "temperature_range": "sub-Kelvin (milliKelvin regime)",
+      "states": [
+        "para-H2 (j=0)",
+        "ortho-H2 (j=1)"
+      ]
+    },
+    "cpes_real": {
+      "symbol": "Re[E(R,φ)]",
+      "units": "hartree",
+      "geometries": [
+        "linear (φ=0)",
+        "T-shape (φ=π/2)"
+      ]
+    },
+    "decay_rate": {
+      "symbol": "Γ(R,φ) = -2 Im[E(R,φ)]",
+      "units": "hartree",
+      "behavior": "Single exponential decay with R"
+    },
+    "potential_well_depths": {
+      "T-shape": "2.87×10^-5 hartree (6.3 cm^-1)",
+      "linear": "5.012×10^-5 hartree (11 cm^-1)",
+      "V_0": "3.5×10^-5 hartree (7.7 cm^-1)",
+      "V_2": "2.28×10^-5 hartree (5 cm^-1)"
+    }
+  },
+  "results": {
+    "cpes_accuracy": "Real part of CPES well approximated by bound-state EOM-SF-CCSD(dT) calculation; overlap of real eigenvalues after analytic continuation with bound-state curve.",
+    "penning_ionization_confirmation": "Decay rate Γ(R) fits single exponential, consistent with Penning ionization model (ref 63).",
+    "reaction_rates": {
+      "para_H2": "Theoretical (red) and experimental (blue) curves in excellent agreement across sub-Kelvin energies (Figure 5a).",
+      "ortho_H2": "Similarly excellent agreement (Figure 5b).",
+      "no_fitting_parameters": "Only fundamental constants (ħ, charges, masses) used."
+    },
+    "method_universality": "Demonstrates robustness for polyatomic CPES and reaction rates, applicable to large decay rates (e.g., ICD)."
+  },
+  "figures": {
+    "Figure 1": "Schematic representation of He*–H2 supermolecule (Jacobi coordinates R, φ, r0).",
+    "Figure 2": "Real potential energy curves for T-shape (φ=π/2): neutral-excited (blue) and cationic (green) states; inset shows shallow well at ~6 Å; red arrows indicate decay rate intensity.",
+    "Figure 3": "(a) Stabilization graph at R=1.5 Å, T-shape: eigenvalues vs real scaling parameter α; blue region = Padé input; magenta = analytically dilated curve. (b) α- and θ-trajectories showing cusp (purple arrow) at resonance.",
+    "Figure 4": "Ab initio CPES for T-shape: (a) Real part Re[E(R)] with inset zoom; (b) Decay rate Γ(R) with log-scale inset showing exponential fit; (c) Real parts of V_0(R) and V_2(R); (d) Decay rate components Γ_0(R) and Γ_2(R).",
+    "Figure 5": "Reaction rates vs collision energy: (a) para-H2 (j=0), (b) ortho-H2 (j=1). Blue = experiment (ref 48), red = theory (this work).",
+    "Supporting_Information": "Figure S1: Real PES for linear geometry. Figure S2: CPES for linear geometry. Tables S1, S2: Convergence tests."
+  },
+  "equations": {
+    "Eq1": "He(2^3S) + H2 → [He*–H2]* → He(1^1S) + H2+ + e-",
+    "Eq2": "E(η) = P(η)/Q(η) (Padé approximant, η = real scaling parameter)",
+    "Eq3": "∂E/∂α = 0, ∂E/∂θ = 0 (stationary point conditions for η = α e^{iθ})",
+    "Eq4": "V(R,φ) = Σ_j [V_j(R) - i/2 Γ_j(R)] P_j(cos φ) (Legendre expansion, V_1=0)",
+    "Eq5": "V_0(R) = 1/3 [V(R,0) + 2V(R,π/2)]; V_2(R) = 2/3 [V(R,0) - V(R,π/2)]",
+    "Eq6": "k(E_col) = (v_col/k_col^2) P(E_col) with P(E_col) = ∫ Ψ_f^* Γ Ψ_i dR dφ",
+    "Metastable_Hamiltonian": "Ĥ = -ħ^2/(2μ) ∂^2/∂R^2 + ĵ^2/(2μr^2) + l̂^2/(2μR^2) + Re[V] - i/2 Γ",
+    "Product_Hamiltonian": "Ĥ = -ħ^2/(2μ) ∂^2/∂R^2 + ĵ^2/(2μr^2) + l̂^2/(2μR^2) + V_He-H2+"
+  },
+  "limitations": {
+    "approximations": [
+      "Rigid rotor approximation for H2 (fixed r0 = 0.74085 Å).",
+      "Only two geometries (φ=0, π/2) used to extract V_0 and V_2; higher Legendre terms neglected.",
+      "RVP method requires careful selection of stabilization graph data points; stability checked but not fully automated.",
+      "Basis set, while large, is finite; BSSE tested but not fully eliminated.",
+      "Adiabatic variational theory for scattering may have limitations at higher energies."
+    ],
+    "previous_work_limitations_addressed": [
+      "Real and imaginary parts calculated concurrently (not separately).",
+      "No empirical fitting of imaginary part (unlike Tang-Toennies model).",
+      "No shifting of correlation energy (unlike 0.4% shift in ref 48).",
+      "Reaction rates from full complex S-matrix, not real phase-shift approximation."
+    ]
+  },
+  "references": {
+    "key_citations": [
+      {
+        "citation": "ref 1",
+        "context": "Autoionization in molecular scattering"
+      },
+      {
+        "citation": "refs 2-4",
+        "context": "Cold molecular collision experiments observing autoionization"
+      },
+      {
+        "citation": "refs 5,6",
+        "context": "Interatomic/intermolecular Coulombic decay (ICD)"
+      },
+      {
+        "citation": "refs 7-9",
+        "context": "DNA/RNA nucleobase damage via slow electrons"
+      },
+      {
+        "citation": "ref 10",
+        "context": "Scattering theory textbook (complex eigenvalues, cusps, reaction rate derivation)"
+      },
+      {
+        "citation": "refs 11-20",
+        "context": "Complex scaling (CS) method for resonances"
+      },
+      {
+        "citation": "ref 21",
+        "context": "Numerical/technical problems with CS"
+      },
+      {
+        "citation": "refs 22-37",
+        "context": "Complex absorbing potential (CAP) methods"
+      },
+      {
+        "citation": "ref 38",
+        "context": "Removal of CAP artificial effects"
+      },
+      {
+        "citation": "refs 33,35,39",
+        "context": "CAP implementations in quantum chemistry packages"
+      },
+      {
+        "citation": "refs 40-46",
+        "context": "Stabilization technique and analytical continuation"
+      },
+      {
+        "citation": "ref 46",
+        "context": "Landau et al.: RVP method (stabilization + Padé) for positions and decay rates"
+      },
+      {
+        "citation": "refs 48,49",
+        "context": "Previous theoretical analyses of He*+H2 autoionization (with approximations)"
+      },
+      {
+        "citation": "ref 50",
+        "context": "Scattering theory for reaction rates (Legendre expansion, adiabatic variational theory)"
+      },
+      {
+        "citation": "refs 51-55",
+        "context": "Other CPES calculations (CI real part + complex Kohn imaginary part)"
+      },
+      {
+        "citation": "refs 56,57",
+        "context": "Fano-ADC-Stieltjes approach"
+      },
+      {
+        "citation": "refs 26,27",
+        "context": "CAP within ADC(2)"
+      },
+      {
+        "citation": "ref 58",
+        "context": "ICD process with large decay rates"
+      },
+      {
+        "citation": "ref 59",
+        "context": "Q-Chem electronic structure package"
+      },
+      {
+        "citation": "ref 60",
+        "context": "EOM-SF-CCSD(dT) method"
+      },
+      {
+        "citation": "ref 61",
+        "context": "Primitive 5ZP basis set"
+      },
+      {
+        "citation": "ref 62",
+        "context": "Cusps in complex trajectories"
+      },
+      {
+        "citation": "ref 63",
+        "context": "Single exponential decay rate for Penning ionization"
+      },
+      {
+        "citation": "refs 64,65",
+        "context": "Legendre polynomial expansion of interaction potentials"
+      },
+      {
+        "citation": "ref 66",
+        "context": "Adiabatic variational theory for reaction rates"
+      },
+      {
+        "citation": "ref 67",
+        "context": "Oskam et al. thermal rate measurement for experimental normalization"
+      }
+    ]
+  },
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-05T00:44:01.414185",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "ben-asher-et-al-2017-polyatomic-ab-initio-complex-potential-energy-surfaces-illustration-of-ultracold-collisions.pdf"
+  }
+}

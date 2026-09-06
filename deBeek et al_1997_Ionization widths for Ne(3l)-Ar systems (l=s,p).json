@@ -1,0 +1,286 @@
+{
+  "paper": {
+    "title": "Ionization widths for Ne(3l)-Ar systems (l=s,p): Application to ionization and intramultiplet mixing cross sections",
+    "authors": [
+      "S. S. Op de Beek",
+      "J. P. J. Driessen",
+      "S. J. J. M. F. Kokkelmans",
+      "W. Boom",
+      "H. C. W. Beijerinck",
+      "B. J. Verhaar"
+    ],
+    "affiliation": "Eindhoven University of Technology, P.O. Box 512, 5600 MB Eindhoven, The Netherlands",
+    "journal": "Physical Review A",
+    "year": 1997,
+    "volume": 56,
+    "issue": 4,
+    "pages": "2792-2805",
+    "doi": "10.1103/PhysRevA.56.2792",
+    "pacs": "34.50.Fa",
+    "received_date": "16 October 1996"
+  },
+  "research": {
+    "objective": "Calculate ab initio autoionization widths for Ne(3s)-Ar and Ne(3p)-Ar systems using a two-electron approximation, and use them in coupled-channel calculations to obtain ionization and intramultiplet mixing cross sections. Compare with experimental data to test the quality of the imaginary part of the optical potential and study the influence of ionization on intramultiplet mixing.",
+    "method": "Two-electron model with projection operator formalism; calculation of two-center two-electron integrals using STOs for bound states and CSTOs for free-electron wave functions; modified coupled-channel code with ab initio ionization widths as input.",
+    "systems_studied": [
+      "Ne(3s)-Ar",
+      "Ne(3p)-Ar"
+    ],
+    "key_findings": [
+      "Ab initio ionization widths for Ne(3s)-Ar agree well with empirical widths from multiproperty analysis.",
+      "For Ne(3s)-Ar, ab initio results cannot explain experimental cross section ratio Q(3P0)/Q(3P2)=1.3, indicating need for ab initio real potentials.",
+      "For Ne(3p)-Ar, coupled-channel calculations with ab initio ionization widths agree with experimental intramultiplet mixing cross sections at E=51.7 eV and ionization cross sections from Bussert et al.",
+      "State-averaged autoionization width for mixed beam (3P0:3P2=1:5) agrees with Baudon et al. for R<6 a0."
+    ]
+  },
+  "states": {
+    "initial_states": [
+      "Ne(3s) metastable multiplet: 3P0 (1s3), 3P1 (1s2, 1s4 mixed), 3P2 (1s5)",
+      "Ne(3p) multiplet: 3D, 3P, 1P states (Paschen notation 2p_i, i=1..10)"
+    ],
+    "final_states": [
+      "Ne-Ar+ system: Ar+(2P_{3/2}) and Ar+(2P_{1/2}) ionic states",
+      "Free electron with kinetic energy ε(R)"
+    ],
+    "quantum_numbers": {
+      "Ne(3s)": {
+        "LSJ": [
+          "3P0",
+          "3P1",
+          "3P2"
+        ],
+        "Paschen": [
+          "1s2",
+          "1s3",
+          "1s4",
+          "1s5"
+        ],
+        "mixing": "1s2 = 0.265644|3P1> + 0.964071|1P1>; 1s3 = |3P0>; 1s4 = 0.265644|1P1> - 0.964071|3P1>; 1s5 = |3P2>"
+      },
+      "Ne(3p)": {
+        "Paschen": "2p_i (i=1..10)"
+      },
+      "Ar+": {
+        "J_f": "1/2, 3/2",
+        "V_f": "projection of J_f"
+      },
+      "free_electron": {
+        "l": "0 to 6 (Ne(3s)-Ar), higher for Ne(3p)-Ar",
+        "m": "projection on internuclear axis"
+      }
+    },
+    "mixing_coefficients": "M_{a→LS} from diagonalization of atomic Hamiltonian; spin-orbit mixing for J=1 states given in Eq. (11)"
+  },
+  "theory": {
+    "formalism": "Projection operator formalism adapted to collisional ionization (O'Malley, Bieniek). Two-electron approximation: radiative mechanism (Ne 3l electron decays to Ne 2p hole, Ar 3p electron ejected) and exchange mechanism (electrons exchanged, Ne 3l electron ejected).",
+    "approximations": [
+      "Two-electron model (only two active electrons)",
+      "Local approximation for electron kinetic energy: ε(R) = V_i(R) - V_f(R)",
+      "Complete set of heavy-particle states assumed",
+      "Bound states normalized to 1, continuum normalized as ⟨f_{q'l'm'}|f_{qlm}⟩ = δ(q'-q)δ_{l'l}δ_{m'm}"
+    ],
+    "hamiltonian": "Electronic Coulomb repulsion between the two active electrons.",
+    "ionization_width_expression": "G(R; a J V) = Σ_{l, J_f, V_f, m, m_s} (2π/ħ) (m_e/ħ q(R)) |V(R; l a J V → J_f V_f l m m_s)|^2 (Eq. 8). Matrix elements V constructed from two-center two-electron integrals (Eqs. 3,4) and expansion coefficients A, B (Eqs. 6,7).",
+    "free_electron_treatment": "Free-electron wave functions calculated in screened Ar+ Coulomb potential (Aymar et al.) and represented as superposition of 3-4 complex Slater-type orbitals (CSTOs) with complex exponents ζ = ζ_r + i ζ_i.",
+    "potential_models": {
+      "real_part": "For Ne(3s)-Ar: Gregor and Siska potentials added to asymptotic energies. For Ne(3p)-Ar: Bussert potentials (single asymptotic energy difference used).",
+      "imaginary_part": "Ab initio calculated Γ(R) from two-electron integrals."
+    }
+  },
+  "numerical": {
+    "basis_sets": {
+      "Ar(3p)": "Clementi STOs",
+      "Ne(3s), Ne(3p), Ne(2p)": "Haberland atomic wave functions as superposition of 3-4 STOs",
+      "free_electron": "3-4 CSTOs per energy"
+    },
+    "integration_method": "Two-center two-electron integrals evaluated using numerical recipe from Ref. [6] (Op de Beek et al.).",
+    "coupled_channel_code": "Modified coupled-channel code including ionization via imaginary potential. Used for cross sections of ionization and intramultiplet mixing.",
+    "convergence_parameters": {
+      "max_l_Ne3sAr": 6,
+      "max_l_Ne3pAr": "higher due to larger electron energy (2.86 eV vs 0.86 eV)",
+      "R_range": "up to ~10 a0 for significant contributions"
+    },
+    "fitting_function": "G_fit(R) = p1 exp[-p2 (R-5a0)] exp[p3 sin(p4 R + p5)] (Eq. 12). Parameters in Table II."
+  },
+  "observables": {
+    "cross_sections": {
+      "ionization": {
+        "symbol": "Q",
+        "units": "cm^2 or atomic units",
+        "energy_range": "0.05–2 eV (Ne(3s)-Ar), 51.7 eV (Ne(3p)-Ar intramultiplet mixing)",
+        "systems": [
+          "Ne(3s)-Ar",
+          "Ne(3p)-Ar"
+        ]
+      },
+      "intramultiplet_mixing": {
+        "symbol": "Q_mix",
+        "units": "cm^2",
+        "energy_range": "51.7 eV (Ne(3p)-Ar)",
+        "systems": [
+          "Ne(3p)-Ar"
+        ]
+      }
+    },
+    "ionization_widths": {
+      "symbol": "Γ(R)",
+      "units": "meV",
+      "R_range": "3–10 a0",
+      "states": [
+        "Ne(3s) 3P0, 3P1, 3P2",
+        "Ne(3p) multiplet"
+      ]
+    },
+    "ratios": {
+      "Q(3P0)/Q(3P2)": 1.3,
+      "Γ(1s2)/Γ(1s4)": 12.5,
+      "V_component_ratios_3P2": "Bussert: 1:0.75:0.016; This work at R=5a0: 1:0.79:0.17; at R=10a0: 1:0.77:0.07"
+    },
+    "experimental_conditions": {
+      "Ne(3s)-Ar": "State-selected ionization cross sections Q(3P0,E), Q(3P2,E) at 0.05–2 eV (Verheijen and Beijerinck)",
+      "Ne(3p)-Ar": "Intramultiplet mixing cross sections at collision energy 51.7 eV (this work); ionization cross sections from Bussert et al."
+    }
+  },
+  "results": {
+    "ne3s_ar": {
+      "ionization_widths": "Calculated Γ(R) for all fine-structure states. Pure triplet states (3P0, 3P2) only exchange mechanism; mixed states (1s2, 1s4) have radiative mechanism giving larger widths. Γ(1s2)/Γ(1s4) ≈ 12.5 constant over R, agrees with lifetime ratio τ(1s4)/τ(1s2) ≈ 13.",
+      "comparison_with_empirical": "State-averaged Γ for mixed beam (3P0:3P2=1:5) agrees excellently with Baudon et al. for R<6 a0. Differs from Gregor and Siska; Verheijen and Beijerinck show reasonable agreement.",
+      "cross_section_ratio": "Ab initio Γ cannot explain experimental Q(3P0)/Q(3P2)=1.3; ab initio real potentials needed."
+    },
+    "ne3p_ar": {
+      "ionization_widths": "Calculated for all states; more l contributions due to higher electron energy (2.86 eV). Relative l contributions shown in Fig. 8.",
+      "coupled_channel_calculations": "Ionization cross sections and intramultiplet mixing cross sections agree with experimental data (Bussert et al. for ionization; this work for mixing at 51.7 eV)."
+    },
+    "v_component_ratios": "For 3P2 state, V=0,1,2 ratios are R-dependent, differing from Bussert's fixed ratios.",
+    "state_averaged_widths": "Mixed beam (3P0:3P2=1:5) agrees with Baudon et al. for R<6 a0, supporting their multiproperty analysis."
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "description": "Potential curves of initial Ne(3s)+Ar and final Ne-Ar+ systems. Shows relative kinetic energy E(R_i) and electron energy ε(R_i)."
+    },
+    {
+      "label": "Fig. 2",
+      "description": "Accumulated contributions to autoionization width G_{l<L} for 3P0 state vs maximum angular momentum L of free electron. Scaled to total width with L=6."
+    },
+    {
+      "label": "Fig. 3",
+      "description": "Schematic plot of radial wave function products contributing to exchange integral. Upper panel: electron 1; lower panel: electron 2. Shows overlap of bound states and free-electron wave function."
+    },
+    {
+      "label": "Fig. 4",
+      "description": "Relative contributions to total autoionization width for l=1 (a) and l=3 (b). Upper panels show free-electron wave functions; correlation between nodes/extrema and l contributions."
+    },
+    {
+      "label": "Fig. 5",
+      "description": "Free-electron wave function for l=2 in (a) pure point-charge Coulomb potential and (b) screened Ar+ 2e- potential at ε=1.15 eV. Shows phase shift of ~π/2 due to screening."
+    },
+    {
+      "label": "Fig. 6",
+      "description": "Autoionization width G(R; a_i^s V) for metastable Ne(3s) states. Curves represented by model function Eq. (12) with parameters in Table II."
+    },
+    {
+      "label": "Fig. 7",
+      "description": "State-averaged autoionization width for mixed beam (3P0:3P2=1:5) compared with Gregor and Siska, Verheijen and Beijerinck, and Baudon et al. Excellent agreement with Baudon et al. for R<6 a0."
+    },
+    {
+      "label": "Fig. 8",
+      "description": "Relative l contributions to total ionization width for a9 state of Ne(3p)-Ar (analogous to Fig. 2)."
+    }
+  ],
+  "equations": [
+    {
+      "label": "Eq. (1)",
+      "expression": "V_opt(R) = V(R) - 1/2 i Γ(R)",
+      "description": "Complex optical potential with real part V(R) and imaginary part Γ(R)/2."
+    },
+    {
+      "label": "Eq. (3)",
+      "expression": "V_rad(R; l m_l,Ar m_l,c m_l,v l m) = ∫∫ dr1 dr2 C_{3p,m_l,Ar}^{Ar}(r1) C_{l m}^{Ar*}(r1) (e^2/4π ε0 r12) C_{3l,m_l,v}^{Ne}(r2) C_{2p,m_l,c}^{Ne*}(r2) = (e^2/4π ε0) ⟨1 m_l,Ar; l m | r12^{-1} | 1 m_l,v; 1 m_l,c⟩_rad",
+      "description": "Radiative mechanism two-center two-electron integral."
+    },
+    {
+      "label": "Eq. (4)",
+      "expression": "V_exch(R; l m_l,Ar m_l,c m_l,v l m) = ∫∫ dr1 dr2 C_{3l,m_l,v}^{Ne}(r1) C_{l m}^{Ar*}(r1) (e^2/4π ε0 r12) C_{3p,m_l,Ar}^{Ar}(r2) C_{2p,m_l,c}^{Ne*}(r2) = (e^2/4π ε0) ⟨l m_l,v; l m | r12^{-1} | 1 m_l,Ar; 1 m_l,c⟩_exch",
+      "description": "Exchange mechanism two-center two-electron integral."
+    },
+    {
+      "label": "Eq. (5)",
+      "expression": "V(R; l, LSJV → J_f V_f, l m m_s) = (e^2/4π ε0) Σ_{m_l,v,m_l,c,m_s,v,m_s,c} A_{Ne(3l)}(LSJV, m_l,v m_l,c m_s,v m_s,c) Σ_{m_l,Ar,m_s,Ar} B_{Ar+}(J_f V_f, m_l,Ar m_s,Ar) [ δ_{m_s,m_s,v} δ_{m_s,c,m_s,Ar} ⟨l m_l,v; l m | r12^{-1} | 1 m_l,Ar; 1 m_l,c⟩_exch - δ_{m_s,m_s,Ar} δ_{m_s,c,m_s,v} ⟨1 m_l,Ar; l m | r12^{-1} | l m_l,v; 1 m_l,c⟩_rad ]",
+      "description": "Ionization matrix elements for pure LSJV initial and J_f V_f final states."
+    },
+    {
+      "label": "Eq. (6)",
+      "expression": "A_{Ne(3l)}(LSJV, m_l,v m_l,c m_s,v m_s,c) = Σ_{M_L,M_S} ⟨L M_L S M_S | J V⟩ (-1)^{1-m_l,c} ⟨1 -m_l,c 1 m_l,v | L M_L⟩ (-1)^{1/2-m_s,c} ⟨1/2 -m_s,c 1/2 m_s,v | S M_S⟩",
+      "description": "Expansion coefficients of antisymmetric initial Ne(3l) state."
+    },
+    {
+      "label": "Eq. (7)",
+      "expression": "B_{Ar+}(J_f V_f, m_l,Ar m_s,Ar) = (-1)^{1-m_l,Ar} (-1)^{1/2-m_s,Ar} ⟨1/2 -m_l,Ar 1/2 -m_s,Ar | J_f V_f⟩",
+      "description": "Final Ar+ ion state coefficients."
+    },
+    {
+      "label": "Eq. (8)",
+      "expression": "Γ(R; a J V) = Σ_l (2π/ħ) (m_e/ħ q(R)) Σ_{J_f,V_f,m,m_s} |V(R; l a J V → J_f V_f l m m_s)|^2 = Σ_l Γ_l(R; a J V)",
+      "description": "Total autoionization width for initial atomic state |a J V⟩."
+    },
+    {
+      "label": "Eq. (9)",
+      "expression": "ε(R) = V_i(R) - V_f(R)",
+      "description": "Local approximation for kinetic energy of emitted electron."
+    },
+    {
+      "label": "Eq. (10)",
+      "expression": "G_{l<L}(R) = Σ_{l'=0}^L G_{l'}(R)",
+      "description": "Partial sums of ionization width contributions up to angular momentum L."
+    },
+    {
+      "label": "Eq. (11)",
+      "expression": "|1s2⟩ = 0.265644|3P1⟩ + 0.964071|1P1⟩; |1s3⟩ = |3P0⟩; |1s4⟩ = 0.265644|1P1⟩ - 0.964071|3P1⟩; |1s5⟩ = |3P2⟩",
+      "description": "Spin-orbit mixing of J=1 singlet and triplet states in Ne(3s) multiplet."
+    },
+    {
+      "label": "Eq. (12)",
+      "expression": "G_fit(R) = p1 exp[-p2 (R-5a0)] exp[p3 sin(p4 R + p5)]",
+      "description": "Model function for R-dependence of autoionization width. Parameters p1..p5 in Table II."
+    }
+  ],
+  "limitations": [
+    "Ab initio calculation only provides imaginary part (ionization widths); real part of potential taken from semi-empirical fits (Gregor and Siska, Bussert).",
+    "Two-electron approximation neglects core polarization and other many-body effects.",
+    "Free-electron wave function sensitive to screened Ar+ potential; phase shifts affect l-contributions.",
+    "Model function for Γ(R) does not capture saturation at small R (R~3 a0).",
+    "Convergence of l-sum: for Ne(3s)-Ar, l>6 contributes <1%; for Ne(3p)-Ar more l needed.",
+    "Coupled-channel calculations use ab initio Γ(R) but real potentials from other sources, limiting fully ab initio prediction.",
+    "Experimental cross section ratio Q(3P0)/Q(3P2)=1.3 for Ne(3s)-Ar not reproduced, indicating need for ab initio real potentials."
+  ],
+  "references": [
+    {
+      "citation": "[1,2]",
+      "context": "Multiproperty analysis combining small-angle scattering, total ionization cross sections, free-electron energy distributions, elastic differential cross sections."
+    },
+    {
+      "citation": "[3,4]",
+      "context": "Morse–Morse–spline–van der Waals (MMSV) and ion-atom MMSV potentials for real part of optical potential."
+    },
+    {
+      "citation": "[5]",
+      "context": "Driessen et al., two-electron model for ionization widths, considered only pure triplet states Ne(3s,3P2) and Ne(3p,3D3)."
+    },
+    {
+      "citation": "[6]",
+      "context": "Op de Beek et al., numerical recipe for two-center two-electron integrals using CSTOs."
+    },
+    {
+      "citation": "[7]",
+      "context": "Other groups proposing"
+    }
+  ],
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-05T00:21:47.084198",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "deBeek et al_1997_Ionization widths for Ne(3l)-Ar systems (l=s,p).pdf"
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "paper": {
+    "title": "INTRAMOLECULAR PENNING IONIZATION IN ORGANIC MOLECULAR RARE GAS CLUSTERS",
+    "authors": [
+      "W. Kamke",
+      "B. Kamke",
+      "H.U. Kiefl",
+      "Z. Wang",
+      "I.V. Hertel"
+    ],
+    "journal": "Chemical Physics Letters",
+    "volume": "128",
+    "number": "4",
+    "pages": "399-403",
+    "date": "1 August 1986",
+    "doi": null
+  },
+  "research": {
+    "focus": "Experimental study of intramolecular Penning ionization (IPI) in heterogeneous clusters of organic molecules (benzonitrile, toluene, benzene, pyridine) seeded in rare gases (Ne, Ar) using synchrotron radiation and supersonic molecular beams.",
+    "objectives": [
+      "Investigate IPI mechanism with neon as carrier gas",
+      "Determine cause of shift and broadening of IPI resonance lines relative to atomic lines",
+      "Test generality of IPI across different (hetero)aromatic molecules"
+    ],
+    "methods": [
+      "Supersonic beam of organic molecules seeded in rare gas",
+      "Photoionization by monochromatic synchrotron radiation (BESSY, 55-150 nm)",
+      "Mass-selected ion detection with quadrupole mass analyzer",
+      "Photoionization efficiency (PIE) curves measured at varying stagnation pressures"
+    ]
+  },
+  "states": {
+    "atomic": {
+      "Ne": {
+        "resonance_lines": [
+          "73.589 nm",
+          "74.370 nm"
+        ],
+        "higher_states": [
+          "64-66 nm (Rydberg)",
+          "58-62 nm (Rydberg)"
+        ]
+      },
+      "Ar": {
+        "resonance_lines": "not explicitly given (dashed lines in Fig. 2)",
+        "ionization_threshold": "~78 nm",
+        "higher_states": [
+          "64-66 nm",
+          "58-62 nm"
+        ]
+      }
+    },
+    "molecular": {
+      "clusters": [
+        "BnNe",
+        "BnAr",
+        "BnKr",
+        "TolAr",
+        "TolNe",
+        "BzAr",
+        "PyrAr",
+        "PyrNe"
+      ],
+      "potential_curves": [
+        "Bn-RG ground state",
+        "Bn-RG* excited state",
+        "Bn+-RG ionized state"
+      ],
+      "process": "Franck-Condon excitation to Bn-RG* followed by energy transfer and ionization"
+    }
+  },
+  "theory": {
+    "interpretation": [
+      "Blue-shift due to vertical (Franck-Condon) energy difference larger than adiabatic difference",
+      "Vibrational excitation in Bn-RG* bond of order of potential well depth",
+      "Ionization during vibrational cycle (bound) or separation (continuum)",
+      "Width origins: finite slope of Bn-RG* potential surface, homogeneous broadening from fast ionization (~10^14 s^-1), contributions from larger clusters BnRG_n"
+    ],
+    "models": "Franck-Condon transitions on cluster potential energy surfaces; no explicit equations provided"
+  },
+  "numerical": {
+    "wavelengths": {
+      "Ne_resonance": [
+        "73.589 nm",
+        "74.370 nm"
+      ],
+      "Ar_ionization_threshold": "~78 nm",
+      "Ar_higher_states": [
+        "64-66 nm",
+        "58-62 nm"
+      ]
+    },
+    "linewidths": {
+      "Ne": "1 nm (120 meV)",
+      "Ar": "2-5 nm (250-600 meV)"
+    },
+    "monochromator_resolution": {
+      "standard": "0.4 nm",
+      "high_resolution": "0.08-0.1 nm"
+    },
+    "stagnation_pressures": {
+      "Ne_onset": "1.2 bar",
+      "Ar_onset": "0.9 bar",
+      "Kr_onset": "0.2 bar",
+      "measurements": [
+        "2 bar",
+        "3 bar",
+        "4.2 bar",
+        "5 bar",
+        "28 bar"
+      ]
+    },
+    "partial_pressures": {
+      "Bn": "~2 mbar",
+      "Bz": "~20 mbar",
+      "Tol": "~50 mbar",
+      "Pyr": "~35 mbar"
+    },
+    "intensity_ratios": {
+      "BnNe+_vs_Bn+": "three orders of magnitude smaller"
+    },
+    "timescales": {
+      "prompt_fragmentation": "<0.5 ps",
+      "metastable_fragmentation": "0.5-5 μs",
+      "ionization_rate": "~10^14 s^-1"
+    }
+  },
+  "observables": {
+    "PIE_curves": "Photoionization efficiency curves for various ions",
+    "resonance_peaks": "At atomic rare gas resonance lines",
+    "shift": "Blue-shift relative to atomic lines, increases with stagnation pressure",
+    "width": "Far beyond monochromator resolution, depends on carrier gas and pressure",
+    "cluster_ion_signals": "Mass-selected ions: Bn+, BnNe+, Tol+, TolAr+, TolNe+, Bz+, Pyr+, PyrAr+, PyrNe+",
+    "fragmentation": "Prompt vs metastable distinguished by energy analysis"
+  },
+  "results": {
+    "IPI_generality": "Observed for benzonitrile, toluene, benzene, pyridine with Ne and Ar; not specific to CN group or ring type",
+    "pressure_dependence": "Blue-shift and width increase with stagnation pressure; onset pressure higher for lighter rare gases",
+    "heterogeneous_vs_fragment": "Heterogeneous cluster spectra show narrower peaks and stronger resonance lines than fragment spectra",
+    "benzene_vapor_pressure": "Low vapor pressure (~20 mbar) needed to enhance heterogeneous cluster formation and observe strong IPI",
+    "pyridine_Ne": "Weak cluster formation, only small peak at Ne resonance",
+    "metastable_heterogeneous_ions": "Not detected for BnNe, indicating very fast dissociation",
+    "threshold_step": "Sharp step at ionization threshold for BnNe cluster, not seen for others"
+  },
+  "figures": {
+    "Fig_1": {
+      "description": "PIE spectra of benzonitrile seeded into Ne and heterogeneous cluster BnNe at stagnation pressures 3.0 bar and 0.1 bar. Partial pressure of Bn ~2 mbar. Ne PIE spectrum and absorption lines shown for comparison.",
+      "key_features": [
+        "IPI peak near Ne resonance lines",
+        "onset at 1.2 bar",
+        "BnNe+ intensity three orders lower than Bn+",
+        "sharp threshold step for BnNe"
+      ]
+    },
+    "Fig_2": {
+      "description": "High-resolution (0.08-0.1 nm) IPI lines for Bn(Ar) and Bn(Ne) at various stagnation pressures. Atomic absorption lines indicated by dashed lines.",
+      "key_features": [
+        "Blue-shift and width increase with pressure",
+        "Three resolved peaks for Ar case",
+        "Bn(Ne) line narrower than Bn(Ar)"
+      ]
+    },
+    "Fig_3": {
+      "description": "PIE spectra for benzene, toluene, pyridine seeded into Ar (4.2 bar) and Ne (5 bar). Partial pressures: Bz 20 mbar, Tol 50 mbar, Pyr 35 mbar. Second-order monochromator effects noted.",
+      "key_features": [
+        "All show rare gas resonance lines",
+        "Tol(Ne) shows additional signal at higher Ne states",
+        "Bz(Ar) shows two resolved peaks at low vapor pressure"
+      ]
+    },
+    "Fig_4": {
+      "description": "PIE spectra for heterogeneous clusters TolAr, PyrAr, TolNe at appropriate stagnation pressures. Second-order effects for λ > 110 nm.",
+      "key_features": [
+        "Heterogeneous clusters dominated by rare gas resonance line",
+        "Higher atomic states do not contribute",
+        "PyrAr resolves two Ar resonance lines clearly"
+      ]
+    }
+  },
+  "equations": [],
+  "limitations": {
+    "unresolved": [
+      "Exact cause of line shift and width (multiple contributions possible)",
+      "Detailed comparison of shifts/widths for different cluster sizes (study in progress)",
+      "Xenon measurements in progress",
+      "Second-order monochromator transmission affects spectra above 110 nm",
+      "Vapor pressure constraints for benzene and pyridine"
+    ],
+    "caveats": [
+      "Homogeneous broadening from fast ionization not excluded",
+      "Contributions from larger clusters BnRG_n may broaden peaks",
+      "Pressure variation of shift differs between Bn(RG) and BnRG spectra"
+    ]
+  },
+  "references": [
+    {
+      "citation": "[1] I. Nenner and J.A. Beswick, Molecular photodissociation and photoionization, in: Handbook of synchrotron radiation, Vol. 2, ed. G.V. Marr (North-Holland, Amsterdam), to be published.",
+      "context": "General reference on molecular photodissociation and photoionization with synchrotron radiation"
+    },
+    {
+      "citation": "[2] W. Kamke, B. Kamke, H.U. Kiefl and I.V. Hertel, Chem. Phys. Letters 122 (1985) 356.",
+      "context": "Previous study on IPI in benzonitrile seeded into He, Ar, Kr; apparatus description"
+    },
+    {
+      "citation": "[3] A. Pesnelle and S. Runge, in: Electronic and atomic collisions, eds. J. Eichler, I.V. Hertel and N. Stolterfoht (Elsevier, Amsterdam, 1984) pp. 559 ff.",
+      "context": "Review of Penning ionization"
+    },
+    {
+      "citation": "[4] A. Niehaus, in: The excited state in chemical physics, Part 2, ed. J.W. McGowan (Wiley, New York, 1981) pp. 399 ff.",
+      "context": "Review of Penning ionization"
+    },
+    {
+      "citation": "[5] C.Y. Ng, in: Advances in chemical physics, Vol. 52, eds. I. Prigogine and S.A. Rice (Wiley, New York, 1983) pp. 263 ff.",
+      "context": "Review of molecular autoionization resonances"
+    },
+    {
+      "citation": "[6] P.D. Dao and A.W. Castleman Jr., J. Chem. Phys. 84 (1986) 1435.",
+      "context": "Observed IPI on paraxylene bound to NH3 and N(CH3)3 using multiphoton ionization"
+    },
+    {
+      "citation": "[7] W. Kamke, B. Kamke, H.U. Kiefl and I.V. Hertel, J. Chem. Phys. 84 (1986) 1325.",
+      "context": "Apparatus description and energy analysis for prompt vs metastable fragmentation"
+    },
+    {
+      "citation": "[8] M.J. Ondrechen, Z. Berkovitch-Yellin and J. Jortner, J. Am. Chem. Soc. 103 (1981) 6586.",
+      "context": "Theoretical work on adiabatic energy differences in clusters"
+    },
+    {
+      "citation": "[9] E. Rühl, P. Bishing, B. Brutschy, K. Beckman, O. Leisin and H. Morgner, to be published.",
+      "context": "Measured PIE spectra of BzAr showing strong IPI lines"
+    }
+  ],
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-06T10:59:02.366810",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "0009-2614%2886%2980385-2.pdf"
+  }
+}

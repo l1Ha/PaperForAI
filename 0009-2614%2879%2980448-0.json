@@ -1,0 +1,326 @@
+{
+  "paper": {
+    "title": "AN IMPROVED SCATTERING POTENTIAL FOR He*(2^3S) + Ar",
+    "authors": [
+      "P.E. Siska"
+    ],
+    "affiliations": [
+      "Department of Chemistry, University of Pittsburgh, Pittsburgh, Pennsylvania 15260, USA"
+    ],
+    "journal": "Chemical Physics Letters",
+    "volume": "63",
+    "issue": "1",
+    "date": "1 May 1979",
+    "pages": "26-31",
+    "doi": null
+  },
+  "research": {
+    "focus": "Derivation of an optical potential for He*(2^3S) + Ar from differential elastic scattering measurements in crossed atomic beams, and validation against other cross section and rate data.",
+    "system": "He*(2^3S) + Ar",
+    "method": "Crossed supersonic beam differential scattering experiments at four collision energies (0.49–3.92 kcal mol⁻¹), with optical model fitting using a constrained realistic potential function (IAMMSV).",
+    "context": "The He*(2^3S)–Ar system is a model for excited-state intermolecular forces and Penning ionization. The potential is complex due to autoionization decay into the He⁺ + Ar⁺ + e⁻ continuum."
+  },
+  "states": [
+    {
+      "species": "He*",
+      "state": "2^3S (triplet metastable)",
+      "energy": "19.82 eV (excitation energy)",
+      "role": "Projectile"
+    },
+    {
+      "species": "Ar",
+      "state": "Ground state (^1S_0)",
+      "role": "Target"
+    },
+    {
+      "species": "He*",
+      "state": "2^1S (singlet metastable)",
+      "energy": "20.61 eV",
+      "role": "Comparison system"
+    },
+    {
+      "species": "He⁺ + Ar⁺ + e⁻",
+      "state": "Ionization continuum",
+      "role": "Decay channel"
+    }
+  ],
+  "theory": {
+    "framework": "Quasi-Born-Oppenheimer approximation with a complex optical potential V(r) = V₀(r) - iΓ(r)/2, where Γ(r) is the resonance width (inverse lifetime).",
+    "potential_model": "IAMMSV (ion-atom-double Morse-spline-van der Waals WKB) form: V₀(r) = f(r)V₋(r) + [1-f(r)]V₊(r). Long-range part V₋(r) = -C₆/r⁶ - C₈/r⁸ - C₁₀/r¹⁰ (alkali-rare-gas-like). Core part V₊(r) represented by a cubic spline. Switching function f(r) = exp[-β(r/rₘ - 1)] (or similar) turns V₋ off and V₊ on as r decreases. Resonance width Γ(r) = A exp(-αr).",
+    "constraints": "Long-range coefficients C₆, C₈, C₁₀ from theoretical calculations (refs [16], [17]). Γ(r) for 3S derived from Γ(1S) (previous work [9]) using theoretical ratio Γ(3S)/Γ(1S) = 1.41 exp(-0.19 r) (r in Å) from Cohen and Lane [20] for He*+H₂, assuming similar ratio for Ar (IP ≈ 15.7 eV). Heuristic analysis by Miller and Morgner [18] supports charge-exchange dominance and weak r-dependence of the ratio.",
+    "scattering_theory": "Complex JWKB phase shifts used to calculate optical model cross sections, averaged over angular and velocity distributions to match experimental resolution. Nonlinear least-squares fitting of four free parameters (E*, rₘ, β, d) simultaneously to four energy datasets."
+  },
+  "numerical": {
+    "methods": [
+      "Complex JWKB phase shift calculation",
+      "Optical model differential cross sections",
+      "Convolution with angular resolution function (adjusted to mimic velocity averaging)",
+      "Nonlinear least-squares optimization (simultaneous fit to four energies)"
+    ],
+    "free_parameters": [
+      {
+        "symbol": "E*",
+        "value": "7.673 kcal mol⁻¹",
+        "description": "Well depth parameter (not the van der Waals well depth)"
+      },
+      {
+        "symbol": "rₘ",
+        "value": "2.955 Å",
+        "description": "Switching function parameter"
+      },
+      {
+        "symbol": "β",
+        "value": "7.105 Å⁻¹",
+        "description": "Switching function steepness"
+      },
+      {
+        "symbol": "d",
+        "value": "0.7172 Å",
+        "description": "Spline parameter"
+      }
+    ],
+    "fixed_parameters": {
+      "C₆": "523.11 kcal mol⁻¹ Å⁶ (ref [9])",
+      "C₈": "7.105 kcal mol⁻¹ Å⁸ (ref [9])",
+      "C₁₀": "5.523 kcal mol⁻¹ Å¹⁰ (ref [9])",
+      "C₆ (theory)": "273 kcal mol⁻¹ Å⁶ (ref [17])",
+      "C₈ (theory)": "3.033 kcal mol⁻¹ Å⁸ (ref [16])",
+      "C₁₀ (theory)": "5.384 kcal mol⁻¹ Å¹⁰ (ref [16])",
+      "Γ(r) parameters": "A = 3.589 × 10⁴ kcal mol⁻¹, α = 2.067 Å⁻¹ (from refs [9,20])"
+    },
+    "fitting_details": "All four differential cross section datasets (E = 0.49, 0.98, 1.96, 3.92 kcal mol⁻¹) fitted simultaneously. Velocity and angular resolution averaging included in the forward model."
+  },
+  "observables": [
+    {
+      "symbol": "dσ/dΩ",
+      "description": "Laboratory differential elastic scattering cross section",
+      "units": "Arbitrary units (relative)",
+      "energy_range": "0.49–3.92 kcal mol⁻¹ (0.02–0.12 eV)",
+      "angle_range": "0°–30° lab angle",
+      "measurement": "Crossed supersonic beams with rotatable electron multiplier detection, phase-sensitive counting with Ar beam modulation"
+    },
+    {
+      "symbol": "Q_total(v)",
+      "description": "Total cross section velocity dependence",
+      "units": "Å²",
+      "velocity_range": "~500–3000 m s⁻¹",
+      "comparison": "Trujillo [10] data (shape agreement, magnitude factor 1.26)"
+    },
+    {
+      "symbol": "Q_ion(v)",
+      "description": "Ionization cross section velocity dependence",
+      "units": "Å²",
+      "velocity_range": "~500–3000 m s⁻¹",
+      "comparison": "Relative measurements of Illenberger & Niehaus [11] and Pesnelle et al. [12] (agreement); absolute measurements of Woodard et al. [13] (disagreement in shape and magnitude)"
+    },
+    {
+      "symbol": "k_Q(T)",
+      "description": "Quenching rate constant temperature dependence",
+      "units": "cm³ s⁻¹",
+      "temperature_range": "300–900 K",
+      "comparison": "Flowing afterglow measurements of Lindinger et al. [14] (near perfect agreement at 300 K, slightly weaker T dependence, 20% discrepancy at 900 K within systematic errors)"
+    }
+  ],
+  "results": {
+    "potential_parameters": {
+      "table1": {
+        "E*": "7.673 kcal mol⁻¹",
+        "rₘ": "2.955 Å",
+        "β": "7.105 Å⁻¹",
+        "d": "0.7172 Å",
+        "C₆": "523.11 kcal mol⁻¹ Å⁶",
+        "C₈": "7.105 kcal mol⁻¹ Å⁸",
+        "C₁₀": "5.523 kcal mol⁻¹ Å¹⁰",
+        "C₆ (theory)": "273 kcal mol⁻¹ Å⁶",
+        "C₈ (theory)": "3.033 kcal mol⁻¹ Å⁸",
+        "C₁₀ (theory)": "5.384 kcal mol⁻¹ Å¹⁰",
+        "A": "3.589 × 10⁴ kcal mol⁻¹",
+        "α": "2.067 Å⁻¹",
+        "r₀": "1.7 Å",
+        "a": "3.589 Å⁻¹",
+        "b": "-0.8 Å⁻¹",
+        "c": "2.067 Å⁻¹"
+      }
+    },
+    "van_der_Waals_well": {
+      "table2": {
+        "He*(2^3S)+Ar": {
+          "ε": "0.05767 kcal mol⁻¹",
+          "rₘ": "3.589 Å"
+        },
+        "He*(2^1S)+Ar": {
+          "ε": "0.061 kcal mol⁻¹",
+          "rₘ": "3.39 Å"
+        },
+        "Li+Ar": {
+          "ε": "0.058 kcal mol⁻¹",
+          "rₘ": "3.58 Å"
+        },
+        "BHS": {
+          "ε": "0.053 kcal mol⁻¹",
+          "rₘ": "3.66 Å"
+        }
+      }
+    },
+    "key_findings": [
+      "Derived optical potential fits differential scattering data at four energies (Fig. 1).",
+      "Potential extrapolates realistically to higher energy (5.65 kcal mol⁻¹) BHS data (Fig. 3), unlike BHS potential which shows too rapid slope change in repulsive wall.",
+      "Well region differs significantly from BHS potential; low-energy repulsions are nearly identical.",
+      "Total cross section velocity dependence matches Trujillo [10] in shape but requires 1.26× scaling for magnitude (consistent with factor 1.38 found for He*(2^1S)+He).",
+      "Ionization cross sections agree with relative measurements [11,12] but disagree with absolute measurements [13].",
+      "Quenching rate constant at 300 K matches Lindinger et al. [14]; temperature dependence slightly weaker but within systematic errors at 900 K.",
+      "Van der Waals well parameters for 3S are closer to Li+Ar than to 1S, consistent with atomic property similarities (Table 3).",
+      "Hybridization model explains repulsive structure differences between 1S and 3S: larger 1s-2p energy gap in 3S reduces 2s-2p mixing, leading to shorter-range repulsion and higher thermal quenching rates for 1S."
+    ]
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "description": "Laboratory differential cross sections for He*(2^3S)+Ar at four collision energies (0.49, 0.98, 1.96, 3.92 kcal mol⁻¹). Experimental points with error bars (two standard deviations) and solid curves from optical potential fit. Data quality lower than singlet due to broader velocity distributions and lower triplet beam intensity. Rapid quantum oscillations partially resolved at two lower energies.",
+      "content": "Differential cross sections vs lab angle, comparison of experiment and theory"
+    },
+    {
+      "label": "Fig. 2",
+      "description": "Four panels: (a) Optical potential for He*(2^3S)+Ar compared with BHS [5]. (b) Real part of optical potential on expanded energy scale showing V₋ and V₊ components; dashed curve from BHS. (c) Comparison of real parts of optical potentials for He*(2^1S)+Ar [9] and He*(2^3S)+Ar. (d) Comparison of resonance widths Γ(r); ratio determined theoretically [20]. Distance scales identical.",
+      "content": "Potential functions and resonance widths"
+    },
+    {
+      "label": "Fig. 3",
+      "description": "Upper panel: Comparison of this work's fit to BHS data at 5.65 kcal mol⁻¹ (245 meV) with BHS optical potential fit. Lower panel: Cross sections from this work's optical potential compared to BHS data and fit at same energy. Discrepancies at wide angles attributed to too rapid slope change in BHS repulsive wall.",
+      "content": "High-energy comparison with BHS data"
+    },
+    {
+      "label": "Fig. 4",
+      "description": "Upper panel: Total and ionization cross sections vs relative velocity (1/v scale). Solid curves from this work's optical potential. Total cross sections: (△) ref [11], (○) ref [10], SLL is Schiff-Lindhard-Lifshitz cross section for ion-induced dipole potential. Ionization cross sections: (□) ref [11], (◇) ref [12], (▽) ref [13]. Lower panel: Quenching rate constant k_Q vs temperature. Solid curve from this work; data points from ref [14].",
+      "content": "Integral cross sections and quenching rate constant comparisons"
+    }
+  ],
+  "equations": [
+    {
+      "label": "(1)",
+      "latex": "V(r) = V_0(r) - i\\Gamma(r)/2",
+      "description": "Complex optical potential with real part V₀(r) and imaginary part -Γ(r)/2 (Γ = resonance width)."
+    },
+    {
+      "label": "(2)",
+      "latex": "f(r) = \\exp[-\\beta(r/r_m - 1)]",
+      "description": "Switching function (exponential form) that turns off V₋ and turns on V₊ as r decreases. (Exact form from paper: f(r) = exp[-β(r/rₘ - 1)]; text garbled but described as exponential.)"
+    },
+    {
+      "label": "(3)",
+      "latex": "V_-(r) = -\\frac{C_6}{r^6} - \\frac{C_8}{r^8} - \\frac{C_{10}}{r^{10}}",
+      "description": "Long-range van der Waals part (alkali-rare-gas-like interaction of Ar with 2s electron)."
+    },
+    {
+      "label": "(4)",
+      "latex": "V_+(r) = \\text{cubic spline}",
+      "description": "Core interaction part represented by a cubic spline."
+    },
+    {
+      "label": "(5)",
+      "latex": "V_0(r) = f(r)V_-(r) + [1-f(r)]V_+(r)",
+      "description": "Combined real potential (inferred from text)."
+    },
+    {
+      "label": "(6)",
+      "latex": "\\Gamma(r) = A \\exp(-\\alpha r)",
+      "description": "Exponential form for resonance width, expected for exchange-dominated ionization."
+    },
+    {
+      "label": "(7)",
+      "latex": "\\Gamma(^3S)/\\Gamma(^1S) = 1.41 \\exp(-0.19 r) \\quad (r \\text{ in } \\AA)",
+      "description": "Theoretical ratio of resonance widths for He*+H₂ from Cohen and Lane [20], used to constrain Γ(³S) from previously derived Γ(¹S)."
+    }
+  ],
+  "limitations": [
+    "Triplet data quality lower than singlet: broader velocity distributions (Mach 7–12 vs higher for singlet), broader angular profile, less than 1/5 triplets in beam, leading to larger statistical uncertainties.",
+    "Quenching lamp efficiency falls slightly below unity at higher He* velocities; correction applied but small.",
+    "Fitting procedure less constrained than for singlet due to less structured data and more severe averaging.",
+    "Potential representation in well region and low-energy repulsive region cannot be captured by simple MSV or MMSV functions (single Morse-spline-van der Waals).",
+    "BHS potential discrepancies at low energy likely due to bimodal He* beam velocity distribution in their experiment, causing errors if weighted-average energy used instead of weighted average of cross sections.",
+    "Quenching rate constant temperature dependence slightly weaker than experiment at 900 K (20% discrepancy within systematic errors).",
+    "Absolute ionization cross sections disagree with Woodard et al. [13] in both shape and magnitude; reasonable extrapolation of their ionization results leads to quenching rate ~50% higher than experimental value.",
+    "Present potential may need revision if future experiments improve resolution of 3S differential scattering."
+  ],
+  "references": [
+    {
+      "citation": "[1-7]",
+      "context": "Previous interatomic potentials proposed for He*+Ar."
+    },
+    {
+      "citation": "[3-5]",
+      "context": "Previous differential elastic scattering measurements for He*+Ar."
+    },
+    {
+      "citation": "[8,9]",
+      "context": "Recent differential scattering study of He*(2^1S) with Ar, Kr, Xe from same lab; potential model and fitting procedure described."
+    },
+    {
+      "citation": "[10]",
+      "context": "Trujillo total cross section data for He*+Ar."
+    },
+    {
+      "citation": "[11]",
+      "context": "Illenberger and Niehaus relative ionization cross sections."
+    },
+    {
+      "citation": "[12]",
+      "context": "Pesnelle et al. relative ionization cross sections."
+    },
+    {
+      "citation": "[13]",
+      "context": "Woodard et al. absolute ionization cross sections and quenching rate constant."
+    },
+    {
+      "citation": "[14]",
+      "context": "Lindinger et al. flowing afterglow quenching rate constant measurements."
+    },
+    {
+      "citation": "[15]",
+      "context": "Brutschy, Haberland and Schmidt (BHS) differential scattering data and optical potential."
+    },
+    {
+      "citation": "[16]",
+      "context": "Proctor and Stwalley theoretical long-range coefficients."
+    },
+    {
+      "citation": "[17]",
+      "context": "Dalgarno and Kingston theoretical long-range coefficients."
+    },
+    {
+      "citation": "[18]",
+      "context": "Miller and Morgner heuristic analysis of resonance width r-dependence."
+    },
+    {
+      "citation": "[19]",
+      "context": "Olson, Smith and Baer semiempirical correlations for charge-exchange matrix elements."
+    },
+    {
+      "citation": "[20]",
+      "context": "Cohen and Lane ab initio calculation of widths for He*(2^1S,2^3S)+H₂ (energy-difference method)."
+    },
+    {
+      "citation": "[21]",
+      "context": "Wang et al. differential scattering for He*+He."
+    },
+    {
+      "citation": "[22]",
+      "context": "Guberman and Goddard ab initio study of He*(2^1S)+He (orbital contour plots)."
+    },
+    {
+      "citation": "[23]",
+      "context": "Tsukiyama, Martin and Siska unpublished work on He*+He and He*+Kr."
+    },
+    {
+      "citation": "[24]",
+      "context": "Moore Atomic Energy Levels."
+    }
+  ],
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-06T10:58:13.331354",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "0009-2614%2879%2980448-0.pdf"
+  }
+}

@@ -1,0 +1,453 @@
+{
+  "paper": {
+    "title": "Investigation of the low-energy stereodynamics in the Ne(3P2) + N2, CO reactions",
+    "authors": [
+      "Junwen Zou",
+      "Andreas Osterwalder"
+    ],
+    "journal": "J. Chem. Phys.",
+    "volume": 153,
+    "issue": 104306,
+    "year": 2020,
+    "doi": "10.1063/5.0022053",
+    "submission_date": "16 July 2020",
+    "acceptance_date": "20 August 2020",
+    "publication_date": "14 September 2020",
+    "affiliations": [
+      "Institute for Chemical Sciences and Engineering, Ecole Polytechnique Fédérale de Lausanne (EPFL), 1015 Lausanne, Switzerland"
+    ]
+  },
+  "research": {
+    "topic": "Low-energy stereodynamics of energy transfer reactions Ne(3P2) + X (X = N2, CO) producing Ne(1S) + X+ and [Ne–X]+ via Penning ionization (PI) and associative ionization (AI).",
+    "objectives": [
+      "Measure collision energy dependence (0.2 K–700 K) of PI and AI product yields.",
+      "Investigate orientation dependence of Ne(3P2) using magnetic field control.",
+      "Compare branching ratios and stereodynamics between N2 and CO.",
+      "Account for predissociation of vibrationally excited [Ne–X]+ complexes."
+    ],
+    "methods": [
+      "Merged supersonic beam technique with magnetic guide for Ne(3P2).",
+      "Orientation of Ne(3P2) via external magnetic field (10 mT).",
+      "Time-of-flight mass spectrometry for product ion detection.",
+      "Wigner D-matrix transformation from lab-frame mJ to molecular-frame Ω populations.",
+      "Model for predissociation probability and PD-corrected AI/PI ratio."
+    ],
+    "key_findings": [
+      "For N2, bare N2+ yield dominates over [Ne–N2]+ at all energies; for CO, [Ne–CO]+ dominates below ~100 K.",
+      "Steric effect (orientation dependence) disappears below ~50 K for both molecules.",
+      "Predissociation probability increases with collision energy for both systems.",
+      "PD-corrected AI/PI ratio ~1 for N2, ~2 for CO at low energies.",
+      "Difference attributed to accessible first excited electronic state of CO+ (A2Π) which does not predissociate, while N2+ A2Πu is energetically inaccessible."
+    ]
+  },
+  "states": {
+    "reactants": [
+      {
+        "species": "Ne",
+        "state": "3P2",
+        "description": "Metastable neon, paramagnetic, J=2, guided by magnetic multipole guide.",
+        "quantum_numbers": {
+          "J": 2,
+          "mJ": [
+            0,
+            1,
+            2
+          ],
+          "populations": {
+            "p0": "0.087 ± 0.015",
+            "p1": "0.75 ± 0.02",
+            "p2": "0.163 ± 0.025"
+          }
+        }
+      },
+      {
+        "species": "N2",
+        "state": "X1Σg+ (v=0, rotational temperature ~20 K)",
+        "description": "Ground state nitrogen molecule."
+      },
+      {
+        "species": "CO",
+        "state": "X1Σ+ (v=0, rotational temperature ~20 K)",
+        "description": "Ground state carbon monoxide."
+      }
+    ],
+    "products": [
+      {
+        "channel": "Penning ionization (PI)",
+        "products": [
+          "Ne(1S)",
+          "X+ (X = N2, CO)"
+        ],
+        "description": "Ne(3P2) + X → Ne(1S) + X+ + e−"
+      },
+      {
+        "channel": "Associative ionization (AI)",
+        "products": [
+          "[Ne–X]+"
+        ],
+        "description": "Ne(3P2) + X → [Ne–X]+ + e−"
+      },
+      {
+        "channel": "Predissociation (PD) of AI product",
+        "products": [
+          "Ne(1S)",
+          "X+"
+        ],
+        "description": "[Ne–X]+ (vibrationally excited) → Ne(1S) + X+"
+      },
+      {
+        "species": "CO+",
+        "states": [
+          {
+            "label": "X2Σ+",
+            "energy": "ground state"
+          },
+          {
+            "label": "A2Π",
+            "energy": "20 733 cm−1 above X2Σ+ (133 755 cm−1 above neutral CO ground state)"
+          }
+        ]
+      },
+      {
+        "species": "N2+",
+        "states": [
+          {
+            "label": "X2Σg+",
+            "energy": "ground state"
+          },
+          {
+            "label": "A2Πu",
+            "energy": "9166 cm−1 above X2Σg+ (134 826 cm−1 above neutral N2 ground state)"
+          }
+        ]
+      }
+    ],
+    "quantum_numbers": {
+      "Ne(3P2)": {
+        "J": 2,
+        "Ω": [
+          0,
+          1,
+          2
+        ],
+        "mJ": [
+          0,
+          1,
+          2
+        ]
+      },
+      "molecular_frame": "Hund's case (c), Ω = projection of J on inter-particle axis"
+    }
+  },
+  "theory": {
+    "framework": "Hund's angular momentum coupling case (c) for transformation from lab to molecular frame.",
+    "models": [
+      {
+        "name": "Wigner D-matrix transformation",
+        "description": "pΩ(θkB) = Σ_{mJ} p_{mJ} w_q |d^J_{Ω,q}(θkB)|^2, with w_q = 2 for Ω=1,2 and 1 for Ω=0.",
+        "equation_ref": "Eq. (4)"
+      },
+      {
+        "name": "Ion yield model",
+        "description": "Total ion yield proportional to sum over Ω of pΩ(θkB) σ_{AI,PI}.",
+        "equation_ref": "Eq. (5)"
+      },
+      {
+        "name": "Predissociation model",
+        "description": "Observed X+ yield = w_pd(E) * I_{NeX+} + I_PI, where w_pd is fraction of NeX+ that predissociate. Predissociation probability P_pd = w_pd/(1+w_pd).",
+        "equation_ref": "Eq. (6)"
+      },
+      {
+        "name": "PD-corrected AI/PI ratio",
+        "description": "I_AI / I_PI = (I_{NeX+} + w_pd I_{NeX+}) / (I_{X+} - w_pd I_{NeX+}).",
+        "equation_ref": "Eq. (7)"
+      }
+    ],
+    "assumptions": [
+      "PI is independent of Ne* orientation (based on rare gas reactions).",
+      "Electronic predissociation of Ne–CO+(A, v=0) is slow on experimental timescale.",
+      "Binding energy of [Ne–CO]+ similar for CO+(X) and CO+(A).",
+      "Long Ne–X distances during reaction justify treating X as atom-like."
+    ],
+    "references": [
+      "Perugia group models (refs 39–43): anisotropic interaction potentials and complex coupling functions.",
+      "Hund's case (c) coupling (refs 45–47).",
+      "Magnetic guide polarization (ref 17, 44)."
+    ]
+  },
+  "numerical": {
+    "collision_energy_range": "0.2 K – 700 K (200 mK – 700 K)",
+    "neon_beam": {
+      "velocity": "700 – 760 m/s",
+      "valve_temperature": "200 – 250 K"
+    },
+    "molecular_beam": {
+      "velocity": "750 – 1700 m/s",
+      "seeding_ratio_He_molecule": "1:10 – 30:1",
+      "rotational_temperature": "~20 K"
+    },
+    "magnetic_field": "10 mT",
+    "populations_mJ": {
+      "p0": "0.087 ± 0.015",
+      "p1": "0.75 ± 0.02",
+      "p2": "0.163 ± 0.025"
+    },
+    "binding_energies": {
+      "Ne–N2+": "~300 cm−1",
+      "Ne–CO+": "~491 cm−1"
+    },
+    "vibrational_frequencies": {
+      "N2+": "2207 cm−1",
+      "CO+": "2214.24 cm−1"
+    },
+    "ionization_potentials": {
+      "CO": "14.014 eV",
+      "N2": "15.581 eV"
+    },
+    "excess_energies": {
+      "CO": "20 986.54 cm−1",
+      "N2": "8347 cm−1"
+    },
+    "excited_state_energies": {
+      "N2+ A2Πu": "9166 cm−1 above X2Σg+ (134 826 cm−1 above neutral ground)",
+      "CO+ A2Π": "20 733 cm−1 above X2Σ+ (133 755 cm−1 above neutral ground)"
+    },
+    "neon_3P2_energy": "133 880 cm−1"
+  },
+  "observables": [
+    {
+      "symbol": "I(NeX+), I(X+)",
+      "description": "Ion yields for associative ionization complex and bare molecular ion",
+      "units": "arbitrary (counts)",
+      "energy_range": "0.2 K – 700 K",
+      "angle_dependence": "θkB (angle between B and k)"
+    },
+    {
+      "symbol": "r(θkB) = I(NeX+)/I(X+)",
+      "description": "Reactivity ratio (angle-dependent)",
+      "units": "dimensionless",
+      "energy_range": "0.2 K – 700 K"
+    },
+    {
+      "symbol": "Steric effect = r(180°)/r(90°)",
+      "description": "Amplitude of angle-dependent oscillations",
+      "units": "dimensionless",
+      "energy_range": "0.2 K – 700 K"
+    },
+    {
+      "symbol": "P_pd",
+      "description": "Predissociation probability of [Ne–X]+",
+      "units": "dimensionless",
+      "energy_range": "0.2 K – 700 K"
+    },
+    {
+      "symbol": "I_AI / I_PI (PD-corrected)",
+      "description": "Ratio of associative ionization to Penning ionization cross sections after predissociation correction",
+      "units": "dimensionless",
+      "energy_range": "0.2 K – 700 K"
+    }
+  ],
+  "results": {
+    "energy_dependence": {
+      "N2": "Bare N2+ yield dominates over [Ne–N2]+ at all collision energies. Angle-integrated ratio I(NeN2+)/I(N2+) < 1 across entire range.",
+      "CO": "At high energies (>100 K), ratio similar to N2; at low energies (<100 K), [Ne–CO]+ yield exceeds CO+ yield (ratio > 1)."
+    },
+    "steric_effect": {
+      "description": "Orientation dependence (steric effect) observed above ~50 K; disappears below ~50 K for both N2 and CO.",
+      "quantification": "Ratio r(180°)/r(90°) = 1 below 50 K (no orientation dependence), ~0.5 at higher energies."
+    },
+    "predissociation": {
+      "description": "Predissociation probability P_pd increases with collision energy for both N2 and CO.",
+      "trend": "Similar upward trend for both molecules."
+    },
+    "PD_corrected_reactivity": {
+      "N2": "AI/PI ratio ~1 at all energies.",
+      "CO": "AI/PI ratio ~2 at low energies, decreasing to ~1 at high energies."
+    },
+    "interpretation": "Difference due to accessible CO+(A2Π) state (only v=0 populated, no predissociation), while N2+(A2Πu) is energetically inaccessible. CO+(A) increases total complex formation cross section."
+  },
+  "figures": [
+    {
+      "label": "Fig. 1",
+      "description": "(a) Time-of-flight mass spectrum at 352 K, θkB=90° for Ne*+CO. (b) Experimental ion yields vs θkB in molecular frame. (c) 2D plot of NeCO+/CO+ ratio vs angle and collision energy."
+    },
+    {
+      "label": "Fig. 2",
+      "description": "Angle-dependent ion yields for Ne*+CO (a,b) and Ne*+N2 (c,d) at 600 mK (a,c) and 352 K (b,d). Red: bare ions, blue: complex ions. Solid lines: fits using Eq. (5)."
+    },
+    {
+      "label": "Fig. 3",
+      "description": "Angle-integrated ratio of Ne–X+ and X+ ion yields vs energy for CO (red) and N2 (blue)."
+    },
+    {
+      "label": "Fig. 4",
+      "description": "Steric effect (r(180°)/r(90°)) vs energy for N2 (blue) and CO (red). Value 1 indicates no orientation dependence."
+    },
+    {
+      "label": "Fig. 5",
+      "description": "Predissociation probability P_pd vs energy for CO (red) and N2 (blue), obtained by fitting Eq. (6)."
+    },
+    {
+      "label": "Fig. 6",
+      "description": "PD-corrected ratio of angle-integrated AI and PI yields for N2 (blue) and CO (red)."
+    },
+    {
+      "label": "Fig. 7",
+      "description": "Energy level diagram for Ne(3P2)+CO reaction showing vibrational levels of CO+(X) and CO+(A) for bare ion and complex."
+    }
+  ],
+  "equations": [
+    {
+      "label": "Eq. (1)",
+      "expression": "A* + BC → A + BC+ + e− (Penning ionization)",
+      "description": "Penning ionization channel"
+    },
+    {
+      "label": "Eq. (2)",
+      "expression": "A* + BC → ABC+ + e− (Associative ionization)",
+      "description": "Associative ionization channel"
+    },
+    {
+      "label": "Eq. (3)",
+      "expression": "A* + BC → A + B + C+ + e− (Dissociative ionization)",
+      "description": "Dissociative ionization channel (closed in these reactions)"
+    },
+    {
+      "label": "Eq. (4)",
+      "expression": "p_Ω(θ_{kB}) = Σ_{mJ} p_{mJ} w_q |d^J_{Ω,q}(θ_{kB})|^2",
+      "description": "Transformation from lab-frame mJ populations to molecular-frame Ω populations using Wigner D-matrices."
+    },
+    {
+      "label": "Eq. (5)",
+      "expression": "I_{AI,PI} ∝ Σ_{Ω=0,1,2} p_Ω(θ_{kB}) σ_{AI,PI}",
+      "description": "Total ion yield proportional to sum over Ω of population-weighted cross sections."
+    },
+    {
+      "label": "Eq. (6)",
+      "expression": "I_{X+}(θ_{kB}, E_{coll}) = w_{pd}(E_{coll}) I_{NeX+}(θ_{kB}, E_{coll}) + I_{PI}(E_{coll})",
+      "description": "Observed bare ion yield as linear combination of predissociated AI complexes and direct PI."
+    },
+    {
+      "label": "Eq. (7)",
+      "expression": "I_{AI} / I_{PI} = (I_{NeX+} + w_{pd} I_{NeX+}) / (I_{X+} - w_{pd} I_{NeX+})",
+      "description": "PD-corrected ratio of AI to PI cross sections."
+    }
+  ],
+  "limitations": [
+    "Assumption that PI is orientation-independent is based on rare gas reactions, not experimentally verified for N2/CO.",
+    "Experiment cannot distinguish between formation of CO+(X) and CO+(A) electronic states; Penning ionization electron spectroscopy needed.",
+    "Timescale for electronic predissociation of Ne–CO+(A) is unknown.",
+    "Simplified model assumes threshold dependence in cross sections for CO+(A) vs CO+(X) without theoretical justification.",
+    "Loss of steric effect at low energies attributed to dynamic reorientation but not fully explained.",
+    "Binding energy of Ne–N2+(v=4) not known accurately enough to determine accessibility."
+  ],
+  "references": [
+    {
+      "citation": "1–16",
+      "context": "Recent work on cold and ultracold chemistry under controlled conditions."
+    },
+    {
+      "citation": "4,6,14",
+      "context": "Phenomena observable at very low collision energies: orbital resonances, quantum tunneling, reactant reorientation."
+    },
+    {
+      "citation": "14,16–24",
+      "context": "Molecular beam techniques for low-energy collisions: co-expansion, crossed beams at low angles, Stark/Zeeman deceleration."
+    },
+    {
+      "citation": "6,25–27",
+      "context": "Merged beam technique for observing shape resonances, state-dependent reactivity, stereodynamics."
+    },
+    {
+      "citation": "28–33",
+      "context": "Previous stereodynamics studies in crossed molecular beams at collision energies >300 K."
+    },
+    {
+      "citation": "34",
+      "context": "First study of cold collisions with steric control: KRb + KRb in optical lattice."
+    },
+    {
+      "citation": "14",
+      "context": "Oriented HD collided with D2 in intra-beam collisions."
+    },
+    {
+      "citation": "9–11",
+      "context": "Magnetically oriented Ne(3P2) used to study Ne(3P2)+Ar and Ne(3P2)+N2 by merged beam method."
+    },
+    {
+      "citation": "35",
+      "context": "Energy transfer reactions studied in the lab."
+    },
+    {
+      "citation": "36–38",
+      "context": "Extensive theoretical and experimental studies of PI, AI, DI."
+    },
+    {
+      "citation": "39–43",
+      "context": "Perugia group: Penning ionization electron spectroscopy and theoretical modeling for Ne(3P2,0) + rare gases and molecules."
+    },
+    {
+      "citation": "44",
+      "context": "Polarization of paramagnetic species in magnetic guide; populations of mJ states determined spectroscopically."
+    },
+    {
+      "citation": "45–47",
+      "context": "Hund's case (c) coupling, Ω quantum number definition."
+    },
+    {
+      "citation": "32,33",
+      "context": "Branching ratio sensitivity to magnetic field direction in previous studies."
+    },
+    {
+      "citation": "48",
+      "context": "Ne(3P2)+ND3 reaction branching insensitive to magnetic field direction."
+    },
+    {
+      "citation": "49",
+      "context": "Associative ionization leads to van der Waals bound charged complex [Ne–X]+."
+    },
+    {
+      "citation": "50",
+      "context": "Predissociation of AI ions fast on experimental timescale."
+    },
+    {
+      "citation": "10,51",
+      "context": "Penning ionization largely insensitive to magnetic field direction in Ne*+Rg reactions."
+    },
+    {
+      "citation": "52",
+      "context": "Even–Lavie valve with dielectric-barrier discharge for metastable Ne(3PJ) production."
+    },
+    {
+      "citation": "53",
+      "context": "Rotational temperature of molecules estimated ~20 K based on previous experiments."
+    },
+    {
+      "citation": "54",
+      "context": "Energy transfer from metastable Ne* to molecules can lead to substantial vibrational excitation of resulting ion."
+    },
+    {
+      "citation": "55",
+      "context": "Binding energy of Ne(1S)–CO+ calculated to be 491 cm−1."
+    },
+    {
+      "citation": "56",
+      "context": "Vibrational frequencies of bare molecular ions: N2+ 2207 cm−1, CO+ 2214.24 cm−1."
+    },
+    {
+      "citation": "57",
+      "context": "N2 and CO are isoelectronic with similar properties."
+    },
+    {
+      "citation": "59",
+      "context": "Binding energy of Ne(1S)–N2+ estimated to be 300 cm−1."
+    }
+  ],
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-05T00:41:59.507320",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "Zou and Osterwalder - 2020 - Investigation of the low-energy stereodynamics in the Ne(3P2) + N2, CO reactions.pdf"
+  }
+}

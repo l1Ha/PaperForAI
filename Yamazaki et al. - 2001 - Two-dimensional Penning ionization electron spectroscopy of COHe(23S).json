@@ -1,0 +1,267 @@
+{
+  "paper": {
+    "title": "Two-dimensional Penning ionization electron spectroscopy of CO/He*(2^3S)",
+    "authors": [
+      "Masakazu Yamazaki",
+      "Naoki Kishimoto",
+      "Masaru Kurita",
+      "Tetsuji Ogawa",
+      "Koichi Ohno",
+      "Kouichi Takeshita"
+    ],
+    "journal": "Journal of Electron Spectroscopy and Related Phenomena",
+    "year": 2001,
+    "volume": "114–116",
+    "pages": "175–181",
+    "doi": "S0368-2048(00)00378-9",
+    "received": "8 August 2000",
+    "revised": "19 September 2000",
+    "accepted": "3 October 2000"
+  },
+  "research": {
+    "topic": "Two-dimensional Penning ionization electron spectroscopy (2D-PIES) of CO by collision with He*(2^3S)",
+    "objectives": [
+      "Observe collision energy dependence of partial ionization cross-sections (CEDPICS) for CO/He*(2^3S)",
+      "Reproduce CEDPICS theoretically using classical trajectory calculations with anisotropic potential energy surfaces",
+      "Calculate potential energy surfaces for entrance and exit channels (ionic ground and excited states of CO+–He)",
+      "Generate collision-energy-resolved PIES (CERPIES) and convert to 2D-PIES for comparison with experiment"
+    ],
+    "system": "CO/He*(2^3S)",
+    "methods": [
+      "Experimental 2D-PIES with time-of-flight and hemispherical electron analyzer",
+      "Classical trajectory calculations on entrance potential energy surface",
+      "Ab initio molecular orbital calculations for potential energy surfaces: CCSD(T)/6-311+G* for entrance (Li–CO model), MRSDCI, OVGF, HF for exit channels",
+      "Ionization width based on electron exchange mechanism",
+      "Franck-Condon factors for vibrational structure"
+    ]
+  },
+  "states": {
+    "entrance_channel": "He*(2^3S) + CO (X^1Σ^+)",
+    "exit_channels": [
+      "He(1^1S) + CO+(X^2Σ^+)",
+      "He(1^1S) + CO+(A^2Π)",
+      "He(1^1S) + CO+(B^2Σ^+)"
+    ],
+    "ionic_states": [
+      {
+        "label": "X",
+        "symmetry": "X^2Σ^+",
+        "description": "Ionic ground state of CO+"
+      },
+      {
+        "label": "A",
+        "symmetry": "A^2Π",
+        "description": "First excited ionic state of CO+"
+      },
+      {
+        "label": "B",
+        "symmetry": "B^2Σ^+",
+        "description": "Second excited ionic state of CO+"
+      }
+    ],
+    "metastable_states": [
+      "He*(2^3S) (triplet metastable)",
+      "He*(2^1S) (singlet metastable, quenched experimentally)"
+    ]
+  },
+  "theory": {
+    "framework": "Classical trajectory calculations with ionization probability on anisotropic potential energy surfaces",
+    "entrance_potential": {
+      "method": "CCSD(T)/6-311+G* with full counterpoise correction for basis set superposition error",
+      "model": "Li–CO potential energy surface V_0(R,θ) scaled by factor 0.55 to mimic He*(2^3S)–CO",
+      "coordinates": "R = distance between Li/He and center of mass of CO, θ = angle between C–X–Li/He",
+      "fixed_CO_distance": "1.1282 Å (experimental)"
+    },
+    "exit_potentials": {
+      "methods": [
+        "MRSDCI (multi-reference single and double excitation configuration interaction) with MIDI-4 polarization basis",
+        "OVGF (outer valence Green's function)",
+        "HF (Hartree-Fock) with Koopmans' theorem"
+      ],
+      "description": "Exit potentials V_i(R,θ) for He–CO+ (ionic states X, A, B). MRSDCI directly calculates V_i; OVGF and HF compute neutral He–CO ground state interaction V_0 plus ionization potentials IP_i(R,θ). Absolute values corrected by observed IPs at infinite separation."
+    },
+    "ionization_width": {
+      "formula": "Γ_i = K_i ⟨f_i| c_{1s}⟩ (Eq. 8)",
+      "approximation": "One-electron approximation, spin inversion for He*(2^3S) eliminates first term, anisotropic dependence governed by compact 1s and ionized orbitals",
+      "constants": "K_i ratios: K_X : K_A : K_B = 1.00 : 3.06 : 1.41 (determined to reproduce observed branching ratios and collision energy dependence)"
+    },
+    "trajectory_calculation": {
+      "details": "3000 trajectories per collision energy, impact parameter b = 0–7 Å, initial vibrational/rotational energies of CO from Boltzmann distribution at 300 K, partial ionization cross-section σ_i = 2π ∫ b P_i db",
+      "electron_energy": "E_e = V_0(R,θ) - V_i(R,θ) at each trajectory step",
+      "CERPIES": "Sum of electron transition probabilities for specific electron kinetic energies at each step",
+      "vibrational_structure": "Distributed according to Franck-Condon factors from UPS data of CO",
+      "apparatus_function": "Bandwidth (fwhm) = 143 meV"
+    }
+  },
+  "numerical": {
+    "collision_energy_range": "10–500 meV (from ion detection TOF)",
+    "trajectories_per_energy": 3000,
+    "impact_parameter_max": "7 Å",
+    "temperature": "300 K (for CO rotational/vibrational distribution)",
+    "energy_resolution": "~80 meV (fwhm of Ar 2P_{3/2} peak in He I UPS)",
+    "apparatus_bandwidth": "143 meV (fwhm)",
+    "scaling_factor_entrance": 0.55,
+    "K_i_ratios": {
+      "X": 1.0,
+      "A": 3.06,
+      "B": 1.41
+    },
+    "contour_interval": "100 meV",
+    "calculated_DW_DE": {
+      "X_state": {
+        "DW_100_250": "26 meV (MRSDCI), 23 meV (OVGF), 21 meV (HF)",
+        "DE_100_250": "21 meV (MRSDCI), 22 meV (OVGF), 20 meV (HF)"
+      },
+      "B_state": {
+        "DW_100_250": "25 meV (MRSDCI), 18 meV (OVGF), 31 meV (HF)",
+        "DE_100_250": "44 meV (MRSDCI), 30 meV (OVGF), 31 meV (HF)"
+      },
+      "experimental": {
+        "X_state": {
+          "DW": "28 meV",
+          "DE": "22 meV"
+        },
+        "B_state": {
+          "DW": "16 meV",
+          "DE": "64 meV"
+        }
+      }
+    }
+  },
+  "observables": {
+    "2D-PIES": "Intensity as function of electron kinetic energy (E_e) and collision energy (E_c) or TOF",
+    "CERPIES": "Collision-energy-resolved PIES (electron energy spectra at specific collision energies)",
+    "CEDPICS": "Collision-energy dependence of partial ionization cross-sections for X, A, B states (log σ_i vs log E_c)",
+    "partial_ionization_cross_sections": "σ_i(E_c) for i = X, A, B",
+    "total_ionization_cross_section": "σ_total(E_c) (normalized to σ|9Å at E_c=100 meV from Ref. [19])",
+    "bandwidth_broadening_DW": "Change in peak width (fwhm) with collision energy",
+    "peak_energy_shift_DE": "Shift in peak position with collision energy",
+    "units": "Cross-sections in cm^2 (or relative units), energies in meV"
+  },
+  "results": {
+    "experimental_2D-PIES": "Contour map shows distinct bands for X, A, B states; CERPIES at E_c≈100 meV and 250 meV show peak shifts and broadening",
+    "CEDPICS": "Positive slope in log–log plot for all states; steepest for A state, indicating soft repulsive potential for side-on collisions at higher energies",
+    "entrance_potential_scaling": "Scaling Li–CO potential by 0.55 reproduces CEDPICS slope; CEDPICS independent of exit potential choice",
+    "calculated_2D-PIES": {
+      "MRSDCI": "Best agreement with experiment; DE_B = 44 meV close to experimental 64 meV; DW_B = 25 meV vs experimental 16 meV",
+      "OVGF": "Reasonable but underestimates DE_B (30 meV) due to weak attractive interaction in B state",
+      "HF": "Overestimates B state bandwidth broadening (DW_B = 31 meV) due to deep potential well around oxygen end; DE_B = 31 meV"
+    },
+    "discrepancy_X_state": "Calculated X state intensity increases with collision energy while experiment stays constant; attributed to insufficient electron correlation in entrance potential (less steep would reduce slope)",
+    "conclusion": "MRSDCI exit potentials give best agreement; HF overestimates B state well; OVGF reasonable but less accurate for B state; entrance potential needs better correlation treatment"
+  },
+  "figures": {
+    "Fig_1": {
+      "description": "(a) Observed 2D-PIES of CO/He*(2^3S) with contour map (arbitrary linear scale) and CERPIES at E_c≈100 meV (solid) and 250 meV (dotted). (b) CEDPICS: experimental circles, calculated solid curves; double circle is total ionization cross-section from Ref. [19] at 100 meV."
+    },
+    "Fig_2": {
+      "description": "Calculated entrance and exit potential energy curves V_0(R,θ) and V_i(R,θ) in meV. Contour maps for entrance and exit (MRSDCI) with lines every 100 meV. Exit curves for X, A, B states from MRSDCI (solid), OVGF (dashed), HF (chained). Negative contours for B state shown as dashed (-200, -100 meV)."
+    },
+    "Fig_3": {
+      "description": "Calculated 2D-PIES using exit potentials from (a) MRSDCI, (b) OVGF, (c) HF. Right panels show CERPIES at E_c=100 meV (solid) and 250 meV (dotted)."
+    }
+  },
+  "equations": {
+    "Eq_1": "A* + M → A + M_i^+ + e^- (Penning ionization)",
+    "Eq_2": "v_f = v_r √(3kT/M) (velocity distribution)",
+    "Eq_3": "σ(E_e, v_r) = C I(E_e, v_r) / I_He*(v_r) * (v_r/v_He*) (cross-section from TOF data)",
+    "Eq_4": "E_c = μ v_r^2 / 2 (collision energy)",
+    "Eq_5": "Γ_i = 2π ρ_el ⟨F_i| H_el | F_0⟩ (ionization width, Fermi's golden rule)",
+    "Eq_6": "⟨F_i| H_el | F_0⟩ ≈ ∑_K [c_{2s}(1) f_i(2) - c_{2s}(2) f_i(1)] / r_{12} (one-electron approximation)",
+    "Eq_7": "Γ_i ≈ 2C ⟨f_i| c_{1s}⟩ (approximation with average constant C)",
+    "Eq_8": "Γ_i = K_i ⟨f_i| c_{1s}⟩ (final form with state-specific constant K_i)",
+    "Eq_9": "σ_i = 2π ∫_0^∞ b P_i db (partial ionization cross-section from trajectories)"
+  },
+  "limitations": {
+    "entrance_potential": "Li–CO model potential scaled by 0.55; insufficient electron correlation leads to discrepancy in X state CEDPICS slope",
+    "classical_trajectory": "No quantum effects (tunneling, interference); fixed CO internuclear distance (no vibration during collision)",
+    "exit_potentials": "HF method overestimates attractive well for B state; OVGF underestimates attraction; MRSDCI most accurate but computationally expensive",
+    "ionization_width": "Approximated by overlap of 1s and ionized orbitals; constant K_i fitted to experiment, not ab initio",
+    "vibrational_structure": "Franck-Condon factors from UPS, not calculated for each geometry"
+  },
+  "references": [
+    {
+      "citation": "F.M. Penning, Naturwissenschaften 15 (1927) 818.",
+      "context": "Original Penning ionization discovery"
+    },
+    {
+      "citation": "A. Niehaus, Adv. Chem. Phys. 45 (1981) 399.",
+      "context": "Review on Penning ionization, electron energy and collision energy dependence"
+    },
+    {
+      "citation": "P.E. Siska, Rev. Mod. Phys. 65 (1993) 337.",
+      "context": "Review on molecular collision dynamics"
+    },
+    {
+      "citation": "K. Ohno, H. Yamakado, T. Ogawa, T. Yamata, J. Chem. Phys. 105 (1996) 7536.",
+      "context": "Previous 2D-PIES calculation for Ar/He* using classical trajectory"
+    },
+    {
+      "citation": "K. Mitsuke, T. Takami, K. Ohno, J. Chem. Phys. 91 (1989) 1618.",
+      "context": "CEDPICS for molecular targets showing anisotropy"
+    },
+    {
+      "citation": "K. Ohno, T. Takami, K. Mitsuke, T. Ishida, J. Chem. Phys. 94 (1991) 2675.",
+      "context": "CEDPICS and trajectory calculations for N2/He*"
+    },
+    {
+      "citation": "N. Kishimoto, M. Furuhashi, K. Ohno, J. Electron Spectrosc. Relat. Phenom. 88–91 (1998) 143.",
+      "context": "2D-PIES applied to N2/He* showing peak shift and broadening"
+    },
+    {
+      "citation": "T. Ogawa, K. Ohno, J. Chem. Phys. 110 (1999) 3773.",
+      "context": "Detailed classical trajectory calculation with ionization probability"
+    },
+    {
+      "citation": "H. Hotop, A. Niehaus, Z. Phys. 228 (1969) 68.",
+      "context": "Electron exchange mechanism of Penning ionization"
+    },
+    {
+      "citation": "T. Takami, K. Mitsuke, K. Ohno, J. Chem. Phys. 95 (1991) 918.",
+      "context": "Experimental apparatus for He* PIES"
+    },
+    {
+      "citation": "J.L. Gardner, J.A.R. Samson, J. Electron Spectrosc. Relat. Phenom. 8 (1976) 469.",
+      "context": "He I UPS reference for transmission efficiency"
+    },
+    {
+      "citation": "K. Kimura, S. Katsumata, Y. Achiba, T. Yamazaki, S. Iwata, Handbook of He I Photoelectron Spectra of Fundamental Organic Molecules, Japan Scientific, Tokyo, 1981.",
+      "context": "Observed IPs of CO at infinite separation for exit potential correction"
+    },
+    {
+      "citation": "E.W. Rothe, R.H. Neynaber, S. Trujillo, J. Chem. Phys. 42 (1965) 3310.",
+      "context": "Metastable atom behavior similar to alkali metals"
+    },
+    {
+      "citation": "H. Hotop, Radiat. Res. 59 (1974) 379.",
+      "context": "Metastable atom interactions"
+    },
+    {
+      "citation": "H. Haberland, Y.T. Lee, P.E. Siska, Adv. Chem. Phys. 45 (1981) 487.",
+      "context": "Metastable atom collision physics"
+    },
+    {
+      "citation": "S.F. Boys, F. Bernardi, Mol. Phys. 19 (1970) 553.",
+      "context": "Full counterpoise method for BSSE correction"
+    },
+    {
+      "citation": "J.V. Ortiz, J. Chem. Phys. 104 (1996) 7599.",
+      "context": "OVGF method for ionization potentials"
+    },
+    {
+      "citation": "M.J. Frisch et al., GAUSSIAN 94, Revision C.3, Gaussian, Inc, Pittsburgh, PA, 1995.",
+      "context": "Quantum chemistry software used for OVGF and HF calculations"
+    },
+    {
+      "citation": "T.P. Parr, D.M. Parr, M. Martin, J. Chem. Phys. 76 (1982) 316.",
+      "context": "Total ionization cross-section for CO/He*(2^3S) at 100 meV used for normalization"
+    }
+  ],
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-05T00:09:55.191650",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "Yamazaki et al. - 2001 - Two-dimensional Penning ionization electron spectroscopy of COHe(23S).pdf"
+  }
+}

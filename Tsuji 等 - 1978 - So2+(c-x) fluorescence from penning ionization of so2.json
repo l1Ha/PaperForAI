@@ -1,0 +1,224 @@
+{
+  "paper": {
+    "title": "SO+ FLUORESCENCE FROM PENNING IONIZATION OF SO2",
+    "authors": [
+      "M. TSUJI",
+      "H. FUKUTOME",
+      "K. TSUJI",
+      "Y. NISHIMURA"
+    ],
+    "affiliation": "Research Institute of Industrial Science, Kyushu University, Hakozaki, Fukuoka 812 (Japan)",
+    "journal": "International Journal of Mass Spectrometry and Ion Physics",
+    "volume": 28,
+    "year": 1978,
+    "pages": "257-265",
+    "received": "10 January 1978",
+    "final_form": "20 February 1978",
+    "doi": null
+  },
+  "research": {
+    "topic": "Penning ionization of SO2 by He(2^3S) metastable atoms and fluorescence spectroscopy of resulting ionic and neutral species",
+    "method": "Flowing afterglow apparatus with microwave discharge (2450 MHz, 80 W) to generate He(2^3S); emission spectroscopy (200-510 nm) using scanning monochromator (1200 lines/mm grating) and photomultiplier detection",
+    "key_findings": [
+      "Identification of SO2+ C^2B_2(v1',0,0) → X^2A_1(v1'',0,0) fluorescence system (origin at 3376 ± 2 Å)",
+      "Determination of symmetric stretching vibrational frequencies: X^2A_1 = 1259 ± 13 cm^{-1}, C^2B_2 = 788 ± 14 cm^{-1}",
+      "Major reaction channel is Penning ionization into C^2B_2 state of SO2+; molecular excitation (SO2*) and dissociative excitation (SO*) are minor",
+      "SO(A^3Π → X^3Σ^-) and SO2(A^1B_1 → X^1A_1) emissions also observed"
+    ]
+  },
+  "states": {
+    "SO2+": {
+      "X^2A_1": {
+        "description": "Ground ionic state (adiabatic IP = 12.305 eV), symmetric stretch frequency 1259 ± 13 cm^{-1}",
+        "vibrational_levels": [
+          "(v1,0,0) for v1 = 0-8"
+        ]
+      },
+      "C^2B_2": {
+        "description": "Excited ionic state (IP = 15.977 eV for v1=0), symmetric stretch frequency 788 ± 14 cm^{-1}",
+        "vibrational_levels": [
+          "(v1',0,0) for v1' = 0-3"
+        ]
+      },
+      "other_states": [
+        "A (13.0 eV)",
+        "B (13.2 eV)",
+        "D (16.3 eV)",
+        "E (16.5 eV)"
+      ]
+    },
+    "SO": {
+      "A^3Π": "Observed emission in 240-265 nm region",
+      "B^3Σ^-": "Not observed in this work"
+    },
+    "SO2": {
+      "A^1B_1": "Continuous emission assigned to A^1B_1 → X^1A_1 transition",
+      "X^1A_1": "Ground state"
+    },
+    "O2+": {
+      "A^2Π_u → X^2Π_g": "Predominant emission in He(2^3S) + O2 reaction, used for comparison"
+    },
+    "He": {
+      "2^3S": "Metastable state (19.8 eV), primary energy carrier",
+      "2^1S": "Rapidly converts to 2^3S by electron collisions"
+    }
+  },
+  "theory": {
+    "analysis_method": "Vibrational assignment based on high-resolution photoelectron spectroscopy data (Eland & Danby [1], Turner et al. [2], Lloyd & Roberts [3])",
+    "energy_level_diagram": "Constructed using excitation energies of SO2 [8] and SO [9], ionization energies of SO2 [1,3], O [10], SO [11], and dissociation energy D(OS-O) = 5.5 eV [12]",
+    "transition_energy_calculation": "Calculated using vibrational intervals from photoelectron data; Delandres table constructed for C^2B_2 → X^2A_1 transition",
+    "assignment_criteria": "Agreement between observed band origin (29620 ± 18 cm^{-1}) and photoelectron estimates (29730 ± 121 [1], 29682 ± 161 [2] cm^{-1}); consistency of vibrational progressions"
+  },
+  "numerical": {
+    "vibrational_frequencies": {
+      "X^2A_1_symmetric_stretch": "1259 ± 13 cm^{-1}",
+      "C^2B_2_symmetric_stretch": "788 ± 14 cm^{-1}",
+      "photoelectron_comparison": {
+        "Eland_Danby": "816 ± 15 cm^{-1} (C state)",
+        "Lloyd_Roberts": "782 ± 20 cm^{-1} (C state)",
+        "Turner_et_al": "850 cm^{-1} (C state)",
+        "molecular_ground_state": "1151 cm^{-1} [8]"
+      }
+    },
+    "ionization_potentials": {
+      "X^2A_1(v1=0)": "12.305 eV",
+      "X^2A_1(v1=1)": "12.461(2) eV",
+      "X^2A_1(v1=2)": "12.613(2) eV",
+      "X^2A_1(v1=3)": "12.766(3) eV",
+      "X^2A_1(v1=4)": "12.919(2) eV",
+      "X^2A_1(v1=5)": "13.067(3) eV",
+      "X^2A_1(v1=6)": "13.214(2) eV",
+      "X^2A_1(v1=7)": "13.363(1) eV",
+      "X^2A_1(v1=8)": "13.506(1) eV",
+      "C^2B_2(v1=0)": "15.977(2) eV",
+      "C^2B_2(v1=1)": "16.075(4) eV",
+      "C^2B_2(v1=2)": "16.171(5) eV",
+      "C^2B_2(v1=3)": "16.264(5) eV"
+    },
+    "band_origin": "3376 ± 2 Å (29620 ± 18 cm^{-1})",
+    "He_pressure": "1-2 torr",
+    "sample_gas_pressure": "5 × 10^{-3} – 5 × 10^{-2} torr",
+    "microwave_discharge": "2450 MHz, 80 W",
+    "wavelength_calibration_error": "±2 Å",
+    "He_2^3S_energy": "19.8 eV",
+    "dissociation_energy_D(OS-O)": "5.5 eV"
+  },
+  "observables": {
+    "emission_spectrum": {
+      "range": "200-510 nm",
+      "resolution": "medium (reciprocal dispersion 8.3 Å/mm)",
+      "features": [
+        "Weak continuous features 265-460 nm",
+        "Numerous discrete bands",
+        "SO(A^3Π → X^3Σ^-) in 240-265 nm",
+        "SO2(A^1B_1 → X^1A_1) continuous emission",
+        "Strong SO2+ C^2B_2 → X^2A_1 band system 310-510 nm"
+      ]
+    },
+    "vibrational_progressions": {
+      "C^2B_2(v1',0,0) → X^2A_1(v1'',0,0)": "v1' = 0-3, v1'' = 0-8 identified"
+    },
+    "intensity_distribution": "Irregular variations in two-component SO+ (a^4Π → X^2Π) ruled out by O2 comparison"
+  },
+  "results": {
+    "main_conclusion": "Penning ionization of SO2 by He(2^3S) predominantly produces SO2+ in the C^2B_2 state, yielding strong fluorescence not observed with other excitation methods (VUV photons, 75-350 eV electrons, 2-3 keV Ar+ ions)",
+    "vibrational_frequencies_determined": {
+      "X^2A_1": "1259 ± 13 cm^{-1} (antibonding character of sulfur lone-pair 8a1 orbital)",
+      "C^2B_2": "788 ± 14 cm^{-1} (strongly bonding nature of 2b2 orbital in S-O)"
+    },
+    "ionization_potentials": "Listed in Table 2 for vibrational levels of X^2A_1 and C^2B_2, agreeing with photoelectron data",
+    "excluded_transitions": "SO+ (a^4Π → X^2Π) emission excluded by comparison with O2+ spectrum",
+    "previous_work_correction": "Wu and Yencha [5] assigned the 16.0 eV state to B; this work assigns it to C^2B_2 based on Lloyd & Roberts [3]"
+  },
+  "figures": {
+    "Fig.1": "Schematic diagram of flowing afterglow apparatus (quartz flow tube 12 mm diameter, Pyrex reaction cell 35 mm diameter, microwave discharge, charged particle deflector, quartz window, monochromator)",
+    "Fig.2": "Typical emission spectrum of SO2 in helium afterglow (240-460 nm), showing continuous features and discrete bands; stray He I lines marked",
+    "Fig.3": "Energy-level diagram of possible products in He(2^3S) + SO2 reaction, using literature excitation/ionization energies and dissociation energy",
+    "Fig.4": "Fluorescence spectrum of SO2+ [C^2B_2(v1',0,0) → X^2A_1(v1'',0,0)] system (310-510 nm), with vibrational assignments and stray He I lines marked"
+  },
+  "equations": {
+    "transition_energy": "Calculated from vibrational intervals: ΔE = E(C, v1') - E(X, v1'')",
+    "ionization_potential": "IP(v1) = IP(0,0,0) + hc × ω_e × v1 (for harmonic approximation)",
+    "band_origin": "λ_0 = 3376 ± 2 Å (ν_0 = 29620 ± 18 cm^{-1})"
+  },
+  "limitations": {
+    "assignment_uncertainties": "Discrepancy between observed band origin and photoelectron estimates in previous work (Wu & Yencha [5])",
+    "SO+_exclusion": "SO+ (a^4Π → X^2Π) emission not definitively ruled out but excluded by analogy with O2+ spectrum",
+    "SO2_fluorescence": "Discrete SO2 fluorescence bands not observed; only continuous emission assigned to A^1B_1 → X^1A_1",
+    "spectral_resolution": "Medium resolution (8.3 Å/mm) limits fine structure analysis",
+    "pressure_effects": "He pressure 1-2 torr may cause collisional quenching"
+  },
+  "references": [
+    {
+      "citation": "J.H.D. Eland and C.J. Danby, Int. J. Mass Spectrom. Ion Phys., 1 (1968) 111.",
+      "context": "High-resolution HeI photoelectron spectra of SO2; IP values for X^2A_1 and C^2B_2 states"
+    },
+    {
+      "citation": "D.W. Turner, C. Baker, A.D. Baker and C.R. Brundle, Molecular Photoelectron Spectroscopy, Wiley-Interscience, London, 1970.",
+      "context": "Photoelectron data for SO2; vibrational frequencies for C state"
+    },
+    {
+      "citation": "D.R. Lloyd and P.J. Roberts, Mol. Phys., 26 (1973) 225.",
+      "context": "HeI and HeII photoelectron spectra above 17 eV; assignment of SO2+ states; vibrational frequency for C^2B_2 (782 ± 20 cm^{-1})"
+    },
+    {
+      "citation": "J.H.D. Eland, M. Devoret and S. Leach, Chem. Phys. Lett., 43 (1976) 97.",
+      "context": "Attempted observation of SO2+ emission by HeI line; fluorescence quantum yield estimate"
+    },
+    {
+      "citation": "K.T. Wu and A.J. Yencha, Can. J. Phys., 55 (1977) 767.",
+      "context": "Observed strong emission 300-550 nm in He(2^3S)+SO2, assigned to B^2A_1 → X^2A_1 (reassigned to C^2B_2 in this work)"
+    },
+    {
+      "citation": "A.V. Phelps, Phys. Rev., 99 (1955) 1307.",
+      "context": "He(2^1S) rapidly converts to He(2^3S) by electron collisions"
+    },
+    {
+      "citation": "G. Herzberg, Electronic Spectra and Electronic Structure of Polyatomic Molecules, Van Nostrand Reinhold, New York, 1966.",
+      "context": "Molecular ground state vibrational frequency (1151 cm^{-1})"
+    },
+    {
+      "citation": "R.W.B. Pearse and A.G. Gaydon, The Identification of Molecular Spectra, 4th edn., Chapman and Hall, London, 1976.",
+      "context": "SO spectral identification"
+    },
+    {
+      "citation": "G. Herzberg, Atomic Spectra and Atomic Structure, Dover Publications, New York, 1944.",
+      "context": "Atomic oxygen ionization energy"
+    },
+    {
+      "citation": "J.M. Dyke, L. Golob, N. Jonathan, A. Morris, M. Okuda and D.J. Smith, J. Chem. Soc., Faraday Trans. 2, 70 (1974) 1818.",
+      "context": "SO ionization energy"
+    },
+    {
+      "citation": "C. Lalo and C. Vermeil, J. Photochem., 3 (1974/75) 441.",
+      "context": "Dissociation energy D(OS-O) = 5.5 eV"
+    },
+    {
+      "citation": "I.H. Hillier and V.R. Saunders, Mol. Phys., 22 (1971) 193.",
+      "context": "SO2+ state assignments (orbital origins)"
+    },
+    {
+      "citation": "H.D. Mettee, J. Chem. Phys., 49 (1968) 1784.",
+      "context": "SO2 fluorescence spectroscopy by UV photoexcitation"
+    },
+    {
+      "citation": "W.H. Smith, J. Quant. Spectrosc. Radiat. Transfer, 9 (1969) 1191; M. Tsuji et al., to be published.",
+      "context": "Electron impact excitation of SO2 (75-350 eV)"
+    },
+    {
+      "citation": "H. Fukutome, M. Tsuji and Y. Nishimura, J. Phys. Soc. Jpn., 44 (1978) 1401.",
+      "context": "Ar+ ion impact excitation of SO2 (2-3 keV)"
+    },
+    {
+      "citation": "W.C. Richardson and D.W. Setser, J. Chem. Phys., 58 (1973) 1809.",
+      "context": "O2+ emission spectrum in He(2^3S)+O2 reaction for comparison"
+    }
+  ],
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-05T00:30:47.633764",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "Tsuji 等 - 1978 - So2+(c-x) fluorescence from penning ionization of so2.pdf"
+  }
+}

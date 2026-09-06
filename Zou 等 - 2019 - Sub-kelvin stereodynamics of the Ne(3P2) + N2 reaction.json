@@ -1,0 +1,282 @@
+{
+  "paper": {
+    "title": "Sub-Kelvin Stereodynamics of the Ne(3P2) + N2 Reaction",
+    "authors": [
+      "Junwen Zou",
+      "Sean D. S. Gordon",
+      "Andreas Osterwalder"
+    ],
+    "affiliation": "Institute for Chemical Sciences and Engineering, Ecole Polytechnique Fédérale de Lausanne (EPFL), 1015 Lausanne, Switzerland",
+    "journal": "Physical Review Letters",
+    "volume": 123,
+    "issue": 13,
+    "pages": "133401",
+    "year": 2019,
+    "doi": "10.1103/PhysRevLett.123.133401",
+    "received": "18 April 2019",
+    "published": "23 September 2019"
+  },
+  "research": {
+    "objective": "Experimental study of low-energy stereodynamics of the Ne(3P2) + N2 reaction, measuring branching between Penning ionization (PI) and associative ionization (AI) as a function of neon orientation and collision energy.",
+    "method": "Merged beam technique with supersonic expansions of state-purified metastable Ne(3P2) and N2, combined with magnetic orientation control using solenoid magnets. Velocity control via valve temperature and seeding ratio yields collision energies from 60 mK to 700 K.",
+    "key_findings": [
+      "Loss of ability to orient Ne below ≈100 K due to dynamic reorientation.",
+      "Associative ionization products Ne-N2+ predissociate with 30%–60% probability.",
+      "AI is entirely due to reactions of the Ω = 2 state, where the singly occupied p orbital of Ne* is oriented along the interatomic axis.",
+      "Steric effect pronounced above 100 K, absent below 10 K.",
+      "Local reduction in predissociation probability around 470 K tentatively assigned to a vibrational Feshbach resonance."
+    ],
+    "system": "Ne(3P2) + N2 collision system",
+    "energy_range": "0.06–700 K (60 mK to 700 K)"
+  },
+  "states": {
+    "reactants": {
+      "Ne*": {
+        "state": "3P2",
+        "electronic_configuration": "1s2 2s2 2p5 3s1",
+        "J": 2,
+        "mJ": "magnetic quantum numbers (polarized via magnetic guide)",
+        "Omega": "Projection of J on interatomic axis: Ω = 0, 1, 2"
+      },
+      "N2": {
+        "state": "Ground electronic state (X1Σg+)",
+        "rotational_temperature": "~20 K",
+        "rotational_levels": "J ≤ 4 (>97% population)",
+        "vibrational_state": "v = 0"
+      }
+    },
+    "products": {
+      "PI": "N2+ + Ne + e-",
+      "AI": "Ne-N2+ (complex) + e-",
+      "predissociation": "Ne-N2+ → Ne + N2+ (30%–60% probability)",
+      "dissociative_ionization": "Ne + N + N+ + e- (not observed)"
+    },
+    "quantum_numbers": {
+      "J": "Total angular momentum of Ne* (J=2)",
+      "mJ": "Magnetic quantum number in lab frame",
+      "Omega": "Projection of J on interparticle axis (Ω = 0, 1, 2)",
+      "parity": "Not explicitly discussed"
+    }
+  },
+  "theory": {
+    "framework": "Merged beam technique with magnetic orientation control. Wigner D-matrices transform measured mJ populations to molecular-frame Ω populations. Reaction cross sections expressed as I_AI,PI ∝ Σ_Ω p(Ω) σ_AI,PI(Ω).",
+    "potentials": {
+      "interaction": "Anisotropic Ne*-N2 potential; similar to Ne*-Ar potential [37]. Dynamic reorientation occurs when interatomic force overcomes magnetic orientation force.",
+      "expansion": "Not explicitly given; referenced to Baudon et al. [37]"
+    },
+    "models": {
+      "predissociation": "Eq. (4): I_N2+(θ_kB, E_coll) = w(E_coll) I_NeN2+(θ_kB, E_coll) + I_PI(E_coll), where w is predissociation fraction.",
+      "reactivity": "Eq. (5): R(θ_kB) = I_AI / I_PI = [I_NeN2+ + w I_NeN2+] / [I_N2+ - w I_NeN2+]. Below 30 K: R_lowE = I_NeN2+ / I_N2+.",
+      "steric_effect": "Quantified by R(90°)/R(180°)."
+    },
+    "approximations": [
+      "PI is angle-independent; AI is angle-dependent and requires Ω=2.",
+      "Predissociation fraction w and direct PI signal I_PI do not depend on magnetic field direction but can vary with collision energy.",
+      "N2 rotational temperature ~20 K makes molecule effectively isotropic."
+    ]
+  },
+  "numerical": {
+    "methods": [
+      "Least-squares fit of Eq. (4) to raw angle-dependent ion yields to extract w(E_coll) and I_PI(E_coll).",
+      "Fit of measured reactivity R to I_AI/I_PI to extract Ω-specific ratios σ_Ω^AI / σ_Ω^PI.",
+      "Wigner D-matrix transformation from lab-frame mJ populations to molecular-frame Ω populations."
+    ],
+    "parameters": {
+      "collision_energy_range": "60 mK – 700 K",
+      "Ne_velocity": "700–760 m/s (valve temp 200–250 K)",
+      "N2_velocity": "750–1700 m/s (He:N2 seeding 1:10 to 30:1)",
+      "magnetic_field": "Two pairs of solenoid magnets at 90° for arbitrary field direction",
+      "orientation_angle": "θ_kB varied 0°–360°"
+    },
+    "software": "Not specified"
+  },
+  "observables": {
+    "measured_quantities": [
+      {
+        "symbol": "I_N2+",
+        "description": "Time-of-flight ion yield of N2+ (Penning ionization + predissociated AI)",
+        "units": "counts",
+        "conditions": "As function of θ_kB and E_coll"
+      },
+      {
+        "symbol": "I_NeN2+",
+        "description": "Time-of-flight ion yield of Ne-N2+ (associative ionization)",
+        "units": "counts",
+        "conditions": "As function of θ_kB and E_coll"
+      },
+      {
+        "symbol": "R(θ_kB)",
+        "description": "Reactivity ratio AI/PI corrected for predissociation",
+        "units": "dimensionless",
+        "conditions": "E_coll > 30 K"
+      },
+      {
+        "symbol": "R_lowE(θ_kB)",
+        "description": "Raw ion signal ratio Ne-N2+/N2+",
+        "units": "dimensionless",
+        "conditions": "E_coll < 30 K"
+      },
+      {
+        "symbol": "σ_Ω^AI / σ_Ω^PI",
+        "description": "Ω-specific reaction cross section ratios for Ω = 0, 1, 2",
+        "units": "dimensionless",
+        "conditions": "Extracted from fit of R(θ_kB)"
+      },
+      {
+        "symbol": "P_pd",
+        "description": "Predissociation probability of Ne-N2+",
+        "units": "dimensionless (0–1)",
+        "conditions": "P_pd = w/(1+w), extracted from fit"
+      },
+      {
+        "symbol": "R(90°)/R(180°)",
+        "description": "Steric effect magnitude",
+        "units": "dimensionless",
+        "conditions": "Ratio of max to min reactivity vs θ_kB"
+      }
+    ],
+    "energy_range": "0.06–700 K",
+    "temperature_range": "0.06–700 K (collision energy/k_B)"
+  },
+  "results": {
+    "main_findings": [
+      "Above 30 K: AI/PI ratio strongly depends on θ_kB, oscillating between PI-dominated and AI-dominated; nearly independent of collision energy.",
+      "Below 30 K: Reactivity becomes independent of θ_kB (dynamic reorientation).",
+      "Ω = 2: AI reactivity ~2.5 at high E, drops to ~0.6 below 30 K. AI exclusively from Ω=2 above 30 K.",
+      "Ω = 0, 1: AI reactivity nearly zero at high E, rises to ~0.5 below 30 K.",
+      "Below 30 K: AI efficiency lower than PI for all Ω.",
+      "Steric effect (R(90°)/R(180°)) pronounced above 100 K, absent below 10 K.",
+      "Predissociation probability P_pd = 30%–60% over entire range, slight downward trend with decreasing E_coll.",
+      "Local minimum in P_pd at ~470 K coincides with v+ = 4 vibrational state of N2+ (tentative vibrational Feshbach resonance).",
+      "Dynamic reorientation threshold similar for Ne*+Ar and Ne*+N2 (~30 K), explained by similar interaction potentials."
+    ],
+    "quantitative_values": {
+      "reorientation_threshold": "≈30 K (loss of steric control), ≈100 K (onset of reorientation)",
+      "predissociation_probability": "0.3–0.6 (30%–60%)",
+      "Omega2_AI_highE": "~2.5",
+      "Omega2_AI_lowE": "~0.6",
+      "Omega01_AI_highE": "~0",
+      "Omega01_AI_lowE": "~0.5",
+      "Feshbach_resonance_energy": "~470 K (v+ = 4 of N2+)"
+    },
+    "comparisons": {
+      "Ne*+Ar": "Similar reorientation threshold (~30 K), but Ne*+Ar shows some AI from Ω=0,1 at high E, while Ne*+N2 shows none."
+    }
+  },
+  "figures": {
+    "Fig1": {
+      "description": "Sketch of interaction region: two parallel molecular beams collide in center of two solenoid pairs at 90°, producing magnetic field B at angle θ_kB relative to relative velocity v_rel.",
+      "content": "Experimental geometry"
+    },
+    "Fig2": {
+      "description": "Raw TOF mass spectra at θ_kB = 85° for (a) E_coll/k_B = 68 mK and (b) 616 K. N2+ (early, red) and NeN2+ (late, blue) distinguished. (c,d) Angle-dependent total ion counts for N2+ (red) and NeN2+ (blue) at same energies.",
+      "content": "Raw data showing ion yields vs TOF and vs θ_kB"
+    },
+    "Fig3": {
+      "description": "(a) Experimental reactivity (raw ion signal ratio) and (b) fitted reactivity (corrected AI/PI) as function of θ_kB and E_coll. Left panels: 0.06–30 K (raw ratio). Right panels: 30–700 K (corrected ratio).",
+      "content": "Reactivity maps showing steric effect and its disappearance at low energy"
+    },
+    "Fig4": {
+      "description": "(a–c) Ω-specific cross section ratios σ_Ω^AI/σ_Ω^PI for Ω=0,1,2. Left: E_coll < 30 K from R_lowE. Right: E_coll > 30 K from corrected R. (d) Steric effect R(90°)/R(180°) vs E_coll. Pink shade: region where longitudinal and transverse velocities comparable.",
+      "content": "Ω-resolved reactivities and steric effect quantification"
+    },
+    "Fig5": {
+      "description": "Predissociation probability P_pd vs E_coll/k_B, obtained by fitting Eq. (4) to data. Shows slight downward trend with decreasing energy and local minimum at ~470 K.",
+      "content": "Energy dependence of predissociation probability"
+    }
+  },
+  "equations": {
+    "Eq1": {
+      "latex": "A^\\ast + BC \\rightarrow A + BC^+ + e^-",
+      "description": "Penning ionization (PI)"
+    },
+    "Eq2": {
+      "latex": "A^\\ast + BC \\rightarrow ABC^+ + e^-",
+      "description": "Associative ionization (AI)"
+    },
+    "Eq3": {
+      "latex": "A^\\ast + BC \\rightarrow A + B + C^+ + e^-",
+      "description": "Dissociative ionization"
+    },
+    "Eq4": {
+      "latex": "I_{N_2^+}(\\theta_{kB},E_{\\text{coll}}) = w(E_{\\text{coll}}) I_{\\text{Ne}N_2^+}(\\theta_{kB},E_{\\text{coll}}) + I_{\\text{PI}}(E_{\\text{coll}})",
+      "description": "Model for measured N2+ signal: sum of predissociated AI fraction and direct PI"
+    },
+    "Eq5": {
+      "latex": "R(\\theta_{kB}) = \\frac{I_{\\text{AI}}}{I_{\\text{PI}}} = \\frac{I_{\\text{Ne}N_2^+}(\\theta_{kB}) + w I_{\\text{Ne}N_2^+}(\\theta_{kB})}{I_{N_2^+}(\\theta_{kB}) - w I_{\\text{Ne}N_2^+}(\\theta_{kB})}",
+      "description": "Corrected reactivity ratio AI/PI for E_coll > 30 K"
+    },
+    "R_lowE": {
+      "latex": "R_{\\text{lowE}}(\\theta_{kB}) = \\frac{I_{\\text{Ne}N_2^+}(\\theta_{kB})}{I_{N_2^+}(\\theta_{kB})}",
+      "description": "Raw reactivity ratio for E_coll < 30 K"
+    },
+    "P_pd": {
+      "latex": "P_{\\text{pd}}(E_{\\text{coll}}) = \\frac{w(E_{\\text{coll}})}{1 + w(E_{\\text{coll}})}",
+      "description": "Predissociation probability"
+    }
+  },
+  "limitations": {
+    "experimental": [
+      "Below 30 K, cannot extract predissociation information because reactivity is independent of θ_kB.",
+      "At lowest collision energies (pink shaded region in Fig. 4d), longitudinal relative velocities become comparable to transverse velocity spread, preventing orientational control.",
+      "N2 rotational temperature (~20 K) leaves population in rotationally excited states, making molecule effectively isotropic and masking anisotropy of Ne*-N2 potential.",
+      "Depolarization occurs between magnetic guide exit and interaction zone (30 cm), complicating polarization analysis."
+    ],
+    "theoretical": [
+      "Model assumes PI is angle-independent and AI requires Ω=2; validity only confirmed above 30 K.",
+      "Tentative assignment of 470 K feature to vibrational Feshbach resonance requires confirmation via state-resolved detection and theoretical calculations.",
+      "Predissociation dynamics not fully characterized; long-lived states suppressing predissociation proposed but not verified [35]."
+    ]
+  },
+  "references": {
+    "cited_works": [
+      {
+        "citation": "[1] R. V. Krems, B. Friedrich, and W. C. Stwalley, Cold Molecules: Theory, Experiment, Applications (CRC Press, 2009).",
+        "context": "General reference on cold molecules"
+      },
+      {
+        "citation": "[4] A. B. Henson et al., Science 338, 234 (2012).",
+        "context": "First demonstration of merged beam approach"
+      },
+      {
+        "citation": "[6] J. Jankunas et al., J. Chem. Phys. 140, 244302 (2014).",
+        "context": "Merged beam technique development"
+      },
+      {
+        "citation": "[16] S. D. S. Gordon et al., Nat. Chem. 10, 1190 (2018).",
+        "context": "Previous Ne*+Ar study with orientation control, similar reorientation effect"
+      },
+      {
+        "citation": "[29] J. Jankunas et al., Mol. Phys. 114, 245 (2016).",
+        "context": "Spectroscopic determination of mJ populations"
+      },
+      {
+        "citation": "[31] D. M. Sonnenfroh and S. R. Leone, Int. J. Mass Spectrom. 80, 63 (1987).",
+        "context": "Vibrational state distributions of AI products governed by Franck-Condon factors"
+      },
+      {
+        "citation": "[32] J. Zou et al., J. Chem. Phys. 148, 164310 (2018).",
+        "context": "High-energy studies of Ne*+N2, predissociation, and Ω-specific propensities"
+      },
+      {
+        "citation": "[33] S. D. S. Gordon et al., Phys. Rev. Lett. 119, 053001 (2017).",
+        "context": "Detailed experimental setup and polarization analysis"
+      },
+      {
+        "citation": "[35] A. Blech et al., arXiv:1902.09262.",
+        "context": "Calculations proposing long-lived states suppressing predissociation"
+      },
+      {
+        "citation": "[37] J. Baudon et al., J. Chem. Phys. 95, 1801 (1991).",
+        "context": "Interaction potentials for Ne* with Ar and N2"
+      }
+    ]
+  },
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-05T00:06:53.067800",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "Zou 等 - 2019 - Sub-kelvin stereodynamics of the Ne(3P2) + N2 reaction.pdf"
+  }
+}

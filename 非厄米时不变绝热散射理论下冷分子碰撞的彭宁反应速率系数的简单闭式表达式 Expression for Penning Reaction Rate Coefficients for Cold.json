@@ -1,0 +1,268 @@
+{
+  "paper": {
+    "title": "Simple Closed-Form Expression for Penning Reaction Rate Coefficients for Cold Molecular Collisions by Non-Hermitian Time-Independent Adiabatic Scattering Theory",
+    "authors": [
+      "Mariusz Pawlak",
+      "Anael Ben-Asher",
+      "Nimrod Moiseyev"
+    ],
+    "journal": "Journal of Chemical Theory and Computation",
+    "year": 2018,
+    "volume": 14,
+    "pages": "236-241",
+    "doi": "10.1021/acs.jctc.7b01017",
+    "received": "October 3, 2017",
+    "published": "November 28, 2017"
+  },
+  "research": {
+    "objective": "Derive a simple closed-form expression for Penning ionization rate coefficients for cold anisotropic collisions using adiabatic variational theory and non-Hermitian time-independent scattering theory, and apply it to He* + H2 collisions.",
+    "system": "Metastable helium atom (1s2s, triplet S) colliding with molecular hydrogen (H2), both para-H2 (j=0) and ortho-H2 (j=1).",
+    "key_innovation": "Only eigenenergies of the 1D radial Schrödinger equation for complex adiabats are needed; product channels are not required; no fitting parameters or scaling used."
+  },
+  "states": {
+    "reactants": {
+      "atom": "He* (1s2s, ^3S)",
+      "molecule": "H2 (rigid rotor, bond length r0 = 1.4487 au)",
+      "rotational_states": [
+        "para-H2 (j=0)",
+        "ortho-H2 (j=1)"
+      ]
+    },
+    "quantum_numbers": {
+      "l": "orbital angular momentum of atom-diatom relative motion (0 to lmax)",
+      "ml": "projection of l",
+      "j": "rotational angular momentum of diatom (0,1)",
+      "mj": "projection of j",
+      "J": "total angular momentum",
+      "M": "projection of J on z-axis",
+      "alpha": "adiabatic potential index (vibrational quantum number on each adiabat)",
+      "nu": "vibrational mode index on alpha-surface",
+      "jth": "rotational threshold index (j=0,1,...,jmax)"
+    },
+    "potentials": {
+      "CPES": "Complex potential energy surface V_C(R,Θ) = Re[V_C] - iΓ_C/2 expanded in Legendre polynomials (eq 2).",
+      "isotropic": "V0_C(R) = Re[V0_C(R)] - iΓ0_C(R)/2",
+      "anisotropic": "V2_C(R) = Re[V2_C(R)] - iΓ2_C(R)/2 (V1_C vanishes due to homonuclear symmetry)",
+      "source": "ab initio CPES from Bhattacharya et al. (J. Chem. Theory Comput. 2017, 13, 1682-1690) [ref 26]"
+    }
+  },
+  "theory": {
+    "framework": "Adiabatic variational theory (refs 10,11) combined with time-independent non-Hermitian scattering theory (refs 12-21).",
+    "hamiltonian": "Eq (3): H = -ħ^2/(2μ_AM) ∂^2/∂R^2 + l̂^2/(2μ_AM R^2) + ĵ^2/(2μ_M r0^2) + V_C(R,Θ). Rigid rotor approximation for H2.",
+    "adiabatic_approximation": "R treated as parameter; potential matrix constructed in basis of spherical harmonics Y_{l,ml} Y_{j,mj} (eq 4,5). Diagonalization yields complex adiabats ε_{α,ν}^{j,th}(R).",
+    "schrodinger_equation": "1D radial Schrödinger equation for each adiabat (eq 6): [-ħ^2/(2μ_AM) d^2/dR^2 + ε_{α,ν}^{j,th}(R)] Ψ = E Ψ, with complex eigenenergies ε = E - iγ/2.",
+    "rate_expression_derivation": "Ionization probability defined via transition matrix elements (eq 7). Simplified using c-product for non-Hermitian states (eq 8). Expectation value of -Γ/2 gives imaginary part of eigenenergy (eq 9). Final rate coefficient (eq 11): k_j(E_col) = (2μ_AM/ħ^2) ∑_{α,ν} γ_{α,ν}^{j,th} ρ(ε_{α,ν}^{j,th}) δ(ε_{α,ν}^{j,th} - E_col) / (N_{α,ν} E_col).",
+    "key_assumptions": "Stiff molecule (rigid rotor); adiabatic separation; continuum discretized; Kronecker delta for energy interpolation; normalization N_{α,ν} ≈ 1 when Γ_C small."
+  },
+  "numerical": {
+    "method": "sin-DVR with 1500 basis functions, box size L = 500 au.",
+    "parameters": {
+      "lmax": 18,
+      "jmax": 1,
+      "r0": "1.4487 au",
+      "reduced_mass_AM": "μ_AM (He-H2)",
+      "reduced_mass_M": "μ_M (H2)",
+      "energy_spread_convolution": "Gaussian with 10 m/s width"
+    },
+    "density_of_states": "ρ(ε) = 2/|ε_{α,ν+1} - ε_{α,ν-1}| from stabilization graphs (ref 33).",
+    "temperature_range": "300 K down to few dozen millikelvin (1 mK – 300 K).",
+    "no_fitting": "No scaling, no fitting parameters, no short-range/asymptotic boundary conditions imposed."
+  },
+  "observables": {
+    "reaction_rate_coefficient": {
+      "symbol": "k_j(E_col) or k_j(T)",
+      "units": "cm^3 s^{-1}",
+      "energy_range": "Collision energy from millikelvin to hundreds of kelvins",
+      "temperature_range": "1 mK – 300 K",
+      "measured_quantity": "Energy-averaged reaction rate coefficient (convoluted with experimental resolution)"
+    }
+  },
+  "results": {
+    "agreement": "Good accord with experimental measurements (Nat. Phys. 2017, 13, 35-38) [ref 4]. Peaks slightly shifted to lower energies. Absolute numbers within experimental uncertainty (large systematic error in normalization at 300 K).",
+    "anisotropy_effect": "Including V2_C (anisotropic term) is crucial; some resonances missed without it (ref 11).",
+    "imaginary_anisotropy_effect": "Neglecting Im[V2_C] (Γ2_C=0) has minor effect, only on low-temperature peak for ortho-H2 (j=1). No effect for para-H2 (j=0) due to vanishing matrix elements. At high energies, Γ2_C large but negligible due to repulsive branches.",
+    "convergence": "lmax=12 sufficient for converged results; lmax=18 used."
+  },
+  "figures": {
+    "Figure 1": {
+      "description": "Reaction rate coefficients for He* + para-H2 (j=0) [upper panel] and He* + ortho-H2 (j=1) [lower panel]. Blue dotted: theoretical from eq 11; purple solid: convoluted with experimental resolution; black points with error bars: experimental data (ref 4); green dashed-dotted: convoluted results excluding Im[V2_C] (lower panel).",
+      "key_findings": "Structures of observed resonances well reconstructed; peaks slightly shifted to smaller energies; no scaling/fitting used."
+    },
+    "Figure 2": {
+      "description": "Isotropic and anisotropic radial interaction potentials V0_C(R) and V2_C(R) (real and imaginary parts). Horizontal dashed-dotted line corresponds to collision energy at 1 K.",
+      "key_findings": "Γ2_C is large at small R but much smaller than Γ0_C; negligible effect at high energies due to repulsive branches."
+    }
+  },
+  "equations": {
+    "eq2": "V_C(R,Θ) = ∑_k [Re[V_k^C(R)] - iΓ_k^C(R)/2] P_k(cos Θ)",
+    "eq3": "H = -ħ^2/(2μ_AM) ∂^2/∂R^2 + l̂^2/(2μ_AM R^2) + ĵ^2/(2μ_M r0^2) + V_C(R,Θ)",
+    "eq4": "V_{q,q'}^{var}(R) = ⟨ψ_q| l̂^2/(2μ_AM R^2) + ĵ^2/(2μ_M r0^2) + V_C(R,Θ) |ψ_{q'}⟩",
+    "eq5": "Explicit matrix elements with δ_{l,l'}δ_{j,j'} terms and angular integrals.",
+    "eq6": "[-ħ^2/(2μ_AM) d^2/dR^2 + ε_{α,ν}^{j,th}(R)] Ψ_{α,ν}^{j,th}(R) = E Ψ_{α,ν}^{j,th}(R)",
+    "eq7": "P_j(E_col) = ∑_{α,ν} ∑_{β,ξ} ρ(ε_{α,ν}^{j,th}) δ(ε_{α,ν}^{j,th} - E_col) |⟨Φ_{β,ξ}^{j,th}| Γ_{α}^{j,th} |Ψ_{α,ν}^{j,th}⟩|^2",
+    "eq8": "P_j(E_col) = ∑_{α,ν} ρ(ε_{α,ν}^{j,th}) δ(ε_{α,ν}^{j,th} - E_col) ⟨Ψ_{α,ν}^{j,th}| Γ_{α}^{j,th} |Ψ_{α,ν}^{j,th}⟩",
+    "eq9": "P_j(E_col) = ∑_{α,ν} γ_{α,ν}^{j,th} ρ(ε_{α,ν}^{j,th}) δ(ε_{α,ν}^{j,th} - E_col) / N_{α,ν}",
+    "eq10": "k_j(E_col) = P_j(E_col) v_col / k_col^2",
+    "eq11": "k_j(E_col) = (2μ_AM/ħ^2) ∑_{α,ν} γ_{α,ν}^{j,th} ρ(ε_{α,ν}^{j,th}) δ(ε_{α,ν}^{j,th} - E_col) / (N_{α,ν} E_col)"
+  },
+  "limitations": {
+    "CPES_accuracy": "Imperfect CPES due to embedded continuum; convergence problems and linear dependencies in ab initio calculations.",
+    "adiabatic_approximation": "Valid within adiabatic variational theory; beyond that the problem becomes more complicated.",
+    "product_channels": "Product information not included; may limit applicability to processes where product states are not needed.",
+    "imaginary_anisotropy": "Effect of neglecting Im[V2_C] not fully understood; minor but present at low temperatures.",
+    "experimental_normalization": "Large systematic error in experimental normalization at 300 K affects absolute comparison."
+  },
+  "references": [
+    {
+      "citation": "Henson et al., Science 2012, 338, 234-238",
+      "context": "Observation of resonances in Penning ionization at sub-Kelvin temperatures in merged beams (ref 1)."
+    },
+    {
+      "citation": "Lavert-Ofir et al., Nat. Chem. 2014, 6, 332-335",
+      "context": "Isotope effect in sub-Kelvin reactions (ref 2)."
+    },
+    {
+      "citation": "Shagam et al., Nat. Chem. 2015, 7, 921-926",
+      "context": "Molecular hydrogen interacts more strongly when rotationally excited at low temperatures (ref 3)."
+    },
+    {
+      "citation": "Klein et al., Nat. Phys. 2017, 13, 35-38",
+      "context": "Directly probing anisotropy in atom-molecule collisions through quantum scattering resonances; experimental data used for comparison (ref 4)."
+    },
+    {
+      "citation": "Jankunas et al., J. Chem. Phys. 2016, 144, 221102",
+      "context": "Multichannel quantum defect model for Penning ionization of polyatomic molecules (ref 5)."
+    },
+    {
+      "citation": "Jachymski et al., ChemPhysChem 2016, 17, 3776-3782",
+      "context": "Experimental and theoretical studies of low-energy Penning ionization (ref 6)."
+    },
+    {
+      "citation": "Jankunas et al., J. Chem. Phys. 2015, 142, 164305",
+      "context": "Observation of orbiting resonances in He(3S1) + NH3 Penning ionization (ref 7)."
+    },
+    {
+      "citation": "Jankunas et al., J. Phys. Chem. A 2014, 118, 3875-3879",
+      "context": "Study of Ne(3P2) + CH3F electron-transfer reaction below 1 K (ref 8)."
+    },
+    {
+      "citation": "Jankunas et al., J. Chem. Phys. 2014, 140, 244302",
+      "context": "Dynamics of Ne* + NH3 and Ne* + ND3 Penning ionization at low temperatures (ref 9)."
+    },
+    {
+      "citation": "Pawlak et al., J. Chem. Phys. 2015, 143, 074114",
+      "context": "Adiabatic theory for anisotropic cold molecule collisions (ref 10)."
+    },
+    {
+      "citation": "Pawlak et al., J. Phys. Chem. A 2017, 121, 2194-2198",
+      "context": "Adiabatic variational theory for cold atom-molecule collisions applied to He* + H2 (ref 11)."
+    },
+    {
+      "citation": "Engdahl et al., J. Chem. Phys. 1991, 94, 1636-1642",
+      "context": "He diffraction and resonance scattering from Cu(115) by complex coordinate method (ref 12)."
+    },
+    {
+      "citation": "Engdahl et al., J. Chem. Phys. 1991, 94, 6330-6333",
+      "context": "Gas-surface scattering cross section by complex coordinate method (ref 13)."
+    },
+    {
+      "citation": "Peskin & Moiseyev, J. Chem. Phys. 1992, 96, 2347-2355",
+      "context": "Gas/surface complex coordinate scattering theory: HD/Ag(111), HD/Pt(111) (ref 14)."
+    },
+    {
+      "citation": "Peskin & Moiseyev, J. Chem. Phys. 1992, 97, 2804-2808",
+      "context": "Broken inversion symmetry in helium diffraction from Cu(115) (ref 15)."
+    },
+    {
+      "citation": "Peskin & Moiseyev, Int. J. Quantum Chem. 1993, 46, 343-363",
+      "context": "Surface asymmetry effect in helium diffraction from copper (ref 16)."
+    },
+    {
+      "citation": "Narevicius & Moiseyev, J. Chem. Phys. 2000, 113, 6088-6095",
+      "context": "Non-Hermitian formulation of interference effect in scattering experiments (ref 17)."
+    },
+    {
+      "citation": "Narevicius & Moiseyev, Phys. Rev. Lett. 1998, 81, 2221-2224",
+      "context": "Fingerprints of broad overlapping resonances in e + H2 cross section (ref 18)."
+    },
+    {
+      "citation": "Narevicius & Moiseyev, Phys. Rev. Lett. 2000, 84, 1681-1684",
+      "context": "Trapping of an electron due to molecular vibrations (ref 19)."
+    },
+    {
+      "citation": "Ben-Asher & Moiseyev, J. Chem. Phys. 2017, 146, 204303",
+      "context": "Boomerang effect in electron-hydrogen molecule scattering (ref 20)."
+    },
+    {
+      "citation": "Moiseyev et al., J. Chem. Phys. 2001, 114, 7351-7360",
+      "context": "Interatomic Coulombic decay in Ne dimer (ref 21)."
+    },
+    {
+      "citation": "Cederbaum et al., Phys. Rev. Lett. 1997, 79, 4778-4781",
+      "context": "Giant intermolecular decay and fragmentation of clusters (ref 22)."
+    },
+    {
+      "citation": "Holmgren et al., J. Chem. Phys. 1977, 67, 4414-4422",
+      "context": "Internal dynamics of van der Waals complexes: Born-Oppenheimer separation (ref 23)."
+    },
+    {
+      "citation": "Dubernet & Hutson, J. Chem. Phys. 1994, 101, 1939-1958",
+      "context": "Atom-molecule van der Waals complexes containing open-shell atoms (ref 24)."
+    },
+    {
+      "citation": "Moiseyev et al., J. Chem. Phys. 2004, 121, 722-725",
+      "context": "Non-Hermitian quantum mechanics: wave packet propagation on autoionizing PESs (ref 25)."
+    },
+    {
+      "citation": "Bhattacharya et al., J. Chem. Theory Comput. 2017, 13, 1682-1690",
+      "context": "Ab initio complex potential energy surfaces for ultracold collisions; CPES used in this work (ref 26)."
+    },
+    {
+      "citation": "Moiseyev, Non-Hermitian Quantum Mechanics, Cambridge University Press, 2011",
+      "context": "Book on non-Hermitian quantum mechanics (ref 27)."
+    },
+    {
+      "citation": "Pawlak & Bylicki, Phys. Rev. A 2011, 83, 023419",
+      "context": "Stark resonances of Yukawa potential (ref 28)."
+    },
+    {
+      "citation": "Pawlak et al., Phys. Rev. A 2010, 82, 065402",
+      "context": "Interferences of Stark resonances induced by AC field (ref 29)."
+    },
+    {
+      "citation": "Pawlak & Moiseyev, Phys. Rev. A 2014, 90, 023401",
+      "context": "Kramers-Henneberger approximation for atoms in high-frequency strong laser fields (ref 30)."
+    },
+    {
+      "citation": "Pawlak et al., Phys. Rev. A 2014, 89, 042506",
+      "context": "Highly excited Rydberg states of rubidium atom (ref 31)."
+    },
+    {
+      "citation": "Landau et al., J. Phys. Chem. A 2016, 120, 3098-3108",
+      "context": "Atomic and molecular complex resonances from real eigenvalues using standard electronic structure calculations (ref 32)."
+    },
+    {
+      "citation": "Macias & Riera, J. Chem. Phys. 1992, 96, 2877-2880",
+      "context": "Calculations of resonance parameters from stabilization graphs (ref 33)."
+    },
+    {
+      "citation": "Chefdeville et al., Phys. Rev. Lett. 2012, 109, 023201",
+      "context": "Low energy resonances in CO-para-H2 inelastic collisions (ref 34)."
+    },
+    {
+      "citation": "Chefdeville et al., (ref 35 incomplete in text)",
+      "context": "Reference 35 appears truncated in provided text."
+    },
+    {
+      "citation": "Veatch & Oskam, (ref 36)",
+      "context": "Rate measurements at 300 K with large systematic error in normalization."
+    }
+  ],
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-04T23:46:04.407396",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "非厄米时不变绝热散射理论下冷分子碰撞的彭宁反应速率系数的简单闭式表达式 Expression for Penning Reaction Rate Coefficients for Cold.pdf"
+  }
+}

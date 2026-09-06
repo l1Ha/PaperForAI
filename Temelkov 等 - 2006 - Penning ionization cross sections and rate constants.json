@@ -1,0 +1,87 @@
+{
+  "paper": {
+    "title": "Penning ionization cross sections and rate constants",
+    "authors": [
+      "K A Temelkov",
+      "N K Vuchkov",
+      "N V Sabotinov"
+    ],
+    "affiliation": "Metal Vapor Lasers Laboratory, Institute of Solid State Physics, Bulgarian Academy of Sciences, 72 Tzarigradsko Chaussee, 1784 Sofia, Bulgaria",
+    "journal": "Journal of Physics: Conference Series",
+    "volume": 44,
+    "year": 2006,
+    "pages": "116–120",
+    "doi": "10.1088/1742-6596/44/1/014",
+    "conference": "First International Workshop and Summer School on Plasma Physics (IWSSPP’05)",
+    "email": "temelkov@issp.bas.bg"
+  },
+  "research": {
+    "objective": "Calculate cross-sections and rate constants for Penning ionization into ion ground state for metastable He and Ne with 22 target metal atoms, and for excited ion states of Cu and Br. Explain experimental results of UV Cu+ Ne-CuBr laser.",
+    "context": "Penning collisions determine population inversion and output parameters in ion metal vapor lasers. Need cross sections for Penning ionization into ground and excited ion states.",
+    "methodology": "Theoretical model based on electron exchange process (3) using billiard ball collision approximation. Cross section formula from Hotop and Niehaus (1969).",
+    "applications": "Metal vapor lasers, UV Cu+ lasers, Ne-CuBr laser, He-Cd+ laser, etc."
+  },
+  "states": {
+    "metastables": [
+      "He*",
+      "Ne*"
+    ],
+    "target_atoms": [
+      "Cu",
+      "Li",
+      "Be",
+      "Na",
+      "Mg",
+      "Al",
+      "K",
+      "Zn",
+      "Se",
+      "Rb",
+      "Sr",
+      "Ag",
+      "Cd",
+      "Cs",
+      "Au",
+      "Hg",
+      "Tl",
+      "Pb",
+      "Bi",
+      "Sn",
+      "Ba",
+      "Br",
+      "Ar",
+      "Kr"
+    ],
+    "ion_states": {
+      "Cu+": [
+        "1S0 (ground)",
+        "4s 3D3",
+        "4s 3D2",
+        "4s 3D1",
+        "4p 3Fo2"
+      ],
+      "Br+": [
+        "3P2 (ground)",
+        "3P0,1",
+        "1D2",
+        "1S0"
+      ]
+    },
+    "energy_levels": "Figure 1 shows schematic diagram of energy levels of copper, neon, bromine ions, and neon metastables. Upper laser level 5s 3D1, lower laser level 4p 3Fo2, Cu+ metastable levels 4s 3D1,2,3."
+  },
+  "theory": {
+    "processes": [
+      "Penning ionization: A* + B → A + B+ + e- + ΔE (Eq. 1)",
+      "Process (2): No electron exchange, vertical transition between potential curves V1 → V2.",
+      "Process (3): Electron exchange, tunneling of target electron followed by Auger emission. Assumed to control cross section for metastables."
+    ],
+    "cross_section_formula": "σ_ex ≈ π R0^2 * (1"
+  },
+  "metadata": {
+    "parsed_by": "PyMuPDF + nvidia/nemotron-3-ultra-550b-a55b",
+    "parsed_at": "2026-09-05T00:26:49.726786",
+    "schema_version": "1.0",
+    "validation_status": "human_verified",
+    "source_pdf": "Temelkov 等 - 2006 - Penning ionization cross sections and rate constants.pdf"
+  }
+}
