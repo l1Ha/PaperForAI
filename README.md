@@ -1,4 +1,5 @@
 # PaperForAI
+From raw text to AI-ready knowledge!
 
 Translate physics-chemistry papers into structured data that AI can reliably understand and use.
 
