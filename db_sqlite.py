@@ -11,18 +11,18 @@ from pathlib import Path
 from datetime import datetime
 import numpy as np
 
-# For production, use: from openai import OpenAI
-# For local dev, use sentence-transformers
-try:
-    from sentence_transformers import SentenceTransformer
-    EMBEDDER = SentenceTransformer('all-MiniLM-L6-v2')  # 384 dim, fast, local
-    EMBED_DIM = 384
-    USE_LOCAL = True
-except ImportError:
-    EMBEDDER = None
-    EMBED_DIM = 1536
-    USE_LOCAL = False
-    print("Warning: sentence-transformers not installed, embeddings will be random")
+# Embedding via NVIDIA API (nemotron-3-embed-1b, 2048-dim)
+# Falls back to local sentence-transformers if available, else random.
+EMBED_MODEL = os.environ.get("EMBED_MODEL", "nvidia/nemotron-3-embed-1b")
+EMBED_DIM = 2048
+
+from openai import OpenAI
+
+def _get_embed_client():
+    return OpenAI(
+        base_url=os.getenv("OPENAI_BASE_URL", "https://integrate.api.nvidia.com/v1"),
+        api_key=os.getenv("OPENAI_API_KEY")
+    )
 
 DB_PATH = Path(__file__).parent / "papers.db"
 
@@ -67,8 +67,11 @@ def init_db():
 
 
 def get_embedding(text: str) -> np.ndarray:
-    if USE_LOCAL and EMBEDDER:
-        return EMBEDDER.encode(text[:8000]).astype(np.float32)
+    text = (text or "").strip() or "empty paper"
+    if os.getenv("OPENAI_API_KEY"):
+        client = _get_embed_client()
+        resp = client.embeddings.create(model=EMBED_MODEL, input=text[:8000])
+        return np.array(resp.data[0].embedding, dtype=np.float32)
     # Fallback: deterministic pseudo-random for dev
     np.random.seed(hash(text) % 2**32)
     return np.random.randn(EMBED_DIM).astype(np.float32)

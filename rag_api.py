@@ -8,25 +8,31 @@ from pydantic import BaseModel
 from typing import List, Optional
 import json
 import sqlite3
+import os
 import numpy as np
 from pathlib import Path
 
-# Local embedder (dev)
-try:
-    from sentence_transformers import SentenceTransformer
-    EMBEDDER = SentenceTransformer('all-MiniLM-L6-v2')
-    USE_LOCAL = True
-except ImportError:
-    EMBEDDER = None
-    USE_LOCAL = False
+# Embedding via NVIDIA API (nemotron-3-embed-1b, 2048-dim)
+from openai import OpenAI
+
+EMBED_MODEL = os.environ.get("EMBED_MODEL", "nvidia/nemotron-3-embed-1b")
+EMBED_DIM = 2048
+
+def _get_embed_client():
+    return OpenAI(
+        base_url=os.getenv("OPENAI_BASE_URL", "https://integrate.api.nvidia.com/v1"),
+        api_key=os.getenv("OPENAI_API_KEY")
+    )
 
 DB_PATH = Path(__file__).parent / "papers.db"
-EMBED_DIM = 384 if USE_LOCAL else 1536
 
 
 def get_embedding(text: str) -> np.ndarray:
-    if USE_LOCAL and EMBEDDER:
-        return EMBEDDER.encode(text[:8000]).astype(np.float32)
+    text = (text or "").strip() or "empty paper"
+    if os.getenv("OPENAI_API_KEY"):
+        client = _get_embed_client()
+        resp = client.embeddings.create(model=EMBED_MODEL, input=text[:8000])
+        return np.array(resp.data[0].embedding, dtype=np.float32)
     np.random.seed(hash(text) % 2**32)
     return np.random.randn(EMBED_DIM).astype(np.float32)
 
